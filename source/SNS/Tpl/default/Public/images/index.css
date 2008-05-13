@@ -1,0 +1,8 @@
+#welcome {padding-top:30px; color:#333;}
+#welcome h2 {font-size:16px; font-weight:normal; line-height:200%;}
+#welcome #t {font-size:14px; line-height:200%;}
+#welcome #t .pipe {margin:0 .5em; color:#ccc;}
+#go {height:5em; font-size:12px; line-height:5em; text-align:right;}
+#go a, #go a span {display:-moz-inline-stack; display:inline-block;}
+#go a {vertical-align:middle; margin-left:1em; border:1px solid #3b6e22; color:#fff; _font-family:Arial,sans-serif; cursor:pointer;}
+#go a span {padding:.5em 1.5em; border-top:1px solid #95bf82; border-bottom:1px solid #65a148; background:#67a54b; color:#fff; font-size:16px; font-weight:bold; line-height:1em; text-align:center; letter-spacing:1px;}

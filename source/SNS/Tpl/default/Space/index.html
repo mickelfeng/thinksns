@@ -1,0 +1,317 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{$uid|getUserName} - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	
+<!--打个招呼 Facebox调用-->
+	<div id="sayhello" style="display:none">
+		<div class="content">
+		<img src="{$uid|getUserFace='m'}" width="96" />
+		好友上线后将会收到提示！
+		</div>
+		<div class="bottom">
+		<input type="button" value="确定" class="fb-yes" id="say-hello" onClick="sayHello({$uid})" />
+		<input type="button" value="取消" class="fb-no" id="close-hello" onClick="$.facebox.close()" />
+		</div>
+	</div>
+	
+<!--加为好友 Facebox调用-->
+	<div id="makefriend" style="display:none;">
+		<div class="content">
+		<img src="{$uid|getUserFace='m'}" width="96" />
+		好友上线后将会收到提示！
+		</div>
+		<div class="bottom">
+		<input type="button" value="确定" class="fb-yes" onClick="addFriend({$uid})" />
+		<input type="button" value="取消" class="fb-no" onClick="$.facebox.close()" />
+		</div>
+	</div>
+	
+	<div id="container">
+		<!-- content -->
+		<php>if($setting->privacy_space==2 && $uid!=$mid){</php>
+		<div style=" border:solid 1px #EEDD69;background:#FFF8CC; padding:5px; line-height:23px; margin-bottom:10px;"><h2>由于{$space.name}的隐私设定，你不能浏览他的空间！</h2></div>
+		<php>}else{</php>
+		<div id="content">
+          <div class="mc-hd">
+            <h2>{$space.name}<span>{$uid|getOnlineStatus='true'}</span></h2>
+            <div class="mini"><span style=" margin:0 auto; color:#999999;">心情：</span>{$uid|getUserNews|t|getShort='25'}<span><me id="uid"><a href="__APP__/Mini">编辑</a></me></span></div>
+          </div>
+	      <div class="mc-bd">
+            <div class="narrow">
+              <div id="pf-picture"> <img src="{$uid|getUserFace='b'}" alt="{$space.name}" width='200' /> </div>
+              <div id="pf-actions">
+				<me id="uid">
+				<ul class="actions">
+					<li><a href="__APP__/Account/basic">编辑我的资料</a></li>
+					<li><a href="__APP__/Account/face">上传我的头像</a></li>
+                </ul>
+				<else />
+				<div class="space-actions">
+					<a href="__APP__/Message/send/to/{$uid}">发送消息</a>
+					<span class="pipe">&nbsp;</span>
+					<a href="#makefriend" title="加{$uid|getUserName}为好友" rel="facebox">加为好友</a>
+					<span class="pipe">&nbsp;</span>
+					<a href="#sayhello" title="向{$uid|getUserName}打招呼" rel="facebox">打个招呼</a>
+				</div>
+				</me>
+              </div>
+              <div id="pf-friend" class="sect">
+                <h3>朋 友</h3>
+                <div class="sect-brief">
+                  <p>{$friendNum} 个好友</p>
+                  <p class="see_all"></p>
+                </div>
+                <div class="sect-content">
+                  <ol class="al">
+                    <volist name="space:friends" id="f">
+                      <li> <a href="__APP__/space/{$f.friendId}"> <img src="{$f.friendId|getUserFace}" alt="{$f.friendId|getUserName}" width='48' /> <span>{$f.friendId|getUserName|getShort="4"}</span></a> </li>
+                    </volist>
+                  </ol>
+                </div>
+              </div>
+              <div id="pf-friend" class="sect">
+                <h3>访 客</h3>
+                <div class="sect-brief">
+                  <p>{$browerNum} 次访问</p>
+                </div>
+                <div class="sect-content">
+                  <ol class="al">
+                    <volist name="space:browers" id="br">
+                      <li> <a href="__APP__/space/{$br.browerId}"> <img src="{$br.browerId|getUserFace}" alt="{$br.browerId|getUserName}" width='48' /> <span>{$br.browerId|getUserName|getShort="4"}</span></a> </li>
+                    </volist>
+                  </ol>
+                </div>
+              </div>
+              <div id="pf-group" class="sect">
+                <h3>群 组</h3>
+                <div class="sect-brief">
+                  <p>{$groupNum} 个群组</p>
+                  <p class="see_all"><a href="__APP__/Group/lists">所有群组</a></p>
+                </div>
+                <div class="sect-content tags">
+                  <volist name="space:groups" id="g">
+				  <a href="__APP__/Group/show/id/{$g.groupId}">{$g.groupId|getGroupName}</a> - 
+				  </volist>
+                </div>
+              </div>
+            </div>
+	        <div class="wide">
+              <div id="pf-basicinfo" class="sect">
+                <div class="sect-content">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>网络：</th>
+                        <td><a href="__APP__/Network/index/{$space.networkId}">{$space.networkId|getNetworkName}</a></td>
+                      </tr>
+                      <tr>
+                        <th>性别：</th>
+                        <td>{$space.sex|getSex}</td>
+                      </tr>
+                      <tr>
+                        <th>生日：</th>
+                        <td>{$space.birth}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+	          <div id="pf-photo" class="sect">
+                <h3>动 态</h3>
+	            <div class="sect-content">
+                  <ul>
+					<volist name="space:feeds" id="vo">
+					<li>
+					<div class="feed feed-{$vo.action}">
+						<a href="#" class="type">{$vo.action}</a>
+						<div class="brief"><a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a> {$vo.title} <span>{$vo.cTime|friendlyDate}</span></div>
+						<neq name="vo.info" value=""><div class="detail">{$vo.info}</div></neq>
+					</div>
+					</li>
+					</volist>
+			      </ul>
+                </div>
+              </div>
+	          <div id="pf-photo" class="sect">
+                <h3>相册</h3>
+	            <div class="sect-brief">
+                  <p>{$photoNum} 个相册</p>
+	              <p class="see_all"><a href="__APP__/photos/{$uid}">所有相册</a></p>
+                </div>
+	            <div class="sect-content">
+                  <ol class="il">
+                  	<volist name="space:albums" id="album">
+                    <li>
+                      <div class="photo-album">
+                        <p class="image"><a href="__APP__/album/{$album.id}"><img src="__PUBLIC__/Thumb/?w=68&h=68&url={$album.id|getAlbumCover}" alt="{$album.title}" /></a></p>
+                        <table class="info">
+                          <caption>
+                            <a href="__APP__/album/{$album.id}">{$album.title}</a>
+                          </caption>
+                          <tr>
+                            <td>{$p.photoCount} 张照片</td>
+                          </tr>
+                          <tr>
+                            <td>更新于 {$p.mTime|friendlyDate}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </li>
+                    </volist>
+                  </ol>
+                </div>
+              </div>
+	          <div id="pf-blog" class="sect">
+                <h3>日志</h3>
+	            <div class="sect-brief">
+                  <p>{$blogNum} 篇日志</p>
+	              <p class="see_all"><a href="__APP__/blogs/{$uid}">所有日志</a></p>
+                </div>
+	            <div class="sect-content">
+                  <ul>
+                    <volist name="space:blogs" id="blog">
+                      <li class="first">
+                        <h4><a href="__APP__/blog/{$blog.id}">{$blog.title}</a></h4>
+                        <div class="content">
+                          <p>{$blog.content|getBlogShort}</p>
+                        </div>
+                        <p class="stat"> <a href="__APP__/blog/{$blog.id}">阅读全文</a> <me id="uid"><span class="pipe">|</span><a href="__APP__/Blog/edit/id/{$blog.id}">编辑</a></me><span class="pipe">|</span><span class="time">{$vo.cTime|friendlyDate="full"}</span> </p>
+                      </li>
+                    </volist>
+                  </ul>
+                </div>
+              </div>
+			  <php>if($setting->privacy_profile!=2 || $mid==$uid){</php>
+              <div id="pf-pinfo" class="sect">
+					<h3>个人资料</h3>
+					<div class="sect-content">
+						<dl>
+							<dt>学校信息</dt><dd><table><tbody>
+							<eq name="educations.school_type" value="u">
+							<tr><th>大学：</th><td><a href="#">{$educations.school_name}</a> <neq name="educations.school_in" value=""><span class="time">(<a href="#">{$educations.school_in}年入学</a>)</span></neq></td>
+							</tr>
+							</eq>
+							<!-- <tr><th>高中：</th><td><a href="#">未知</a><span class="time">(<a href="#">2002年入学</a>)</span></td>
+							</tr> -->
+							</tbody></table></dd>
+							
+							<dt>工作信息</dt>
+							<dd>
+							<table><tbody><tr><th>公司：</th><td><a href="#">{$works.company}</a>
+							<p class="desc">{$works.company_info}</p></td></tr></tbody></table></dd>					
+							<dt>联系信息</dt>
+
+							<dd>
+								<table>
+									<tbody>
+								<tr><th>Email：</th><td><p>{$space.email}</p></td></tr>
+								<tr><th>MSN：</th><td>{$contacts.msn}</td></tr>
+								<tr><th>GTalk：</th><td>{$contacts.gtalk}</td></tr>
+								<tr><th>QQ：</th><td>{$contacts.qq}</td></tr>
+								<tr><th>手机：</th><td>{$contacts.cell}</td></tr>
+								<tr><th>住址：</th><td>北京</td></tr>
+								<tr><th>个人网址：</th><td><a href='{$contacts.homepage}' target='_blank'>{$contacts.homepage}</a></td></tr>	</tbody>
+
+								</table>
+							</dd>
+							<dt>兴趣爱好:{$interests.tags}</dt>
+						</dl>
+					</div>
+					<div class="sect-link">
+						<a href="#">编辑</a>			
+					</div>
+			  </div>
+			  <php>}else{</php>
+			  <div id="pf-pinfo" class="sect">
+			  <h3>个人资料</h3>
+			  <div class="sect-content">由于该用户的隐私设置，你不能访问！</div>
+			  </div>
+			  <php>}</php>
+              <php>if($setting->privacy_wall!=2 || $mid==$uid){</php>    
+	          <div id="pf-wall" class="sect">
+                <!--Fantasy修改-->
+
+                <h3>留 言</h3>
+	            <div class="sect-brief">
+                  <p><span id="wallnum">{$wallNum} </span>条留言</p>
+	              <p class="see_all"><a href="__APP__/Wall/index/uid/{$uid}">所有留言</a></p>
+                </div>
+
+	            <div class="sect-content">
+				<notme id="uid">
+				<div  class="pf-wall-post">
+                <!--<form action="__APP__/Gbook/insert" method="post" >-->
+                <form name="form1">
+                <input type="hidden" name="userId" id="userId" value="{$uid}" />
+                <input type="hidden" name="guestId" id="guestId" value="{$mid}" />
+                <input type="hidden" id="guestImg" value="{$mid|getUserFace}">
+                <input type="hidden" id="guestName" value="{$mid|getUserName}">
+                <input type="hidden" id="guestProv" value="{$mid|getUserProvince}">
+                <input type="hidden" id="gbookId" value="{$gbook.id}">
+                <textarea name="content"  class="kk" id="con" rows="5" cols="60" maxlength="200"></textarea>
+                <div class="pf-wall-act">
+                <!--<input type="submit" name="Submit" value="留 言" class="f-button" />-->
+                <!--Fantasy 修改 -->
+                <input type="button"   value="留 言" id="ajaxly" class="f-button" />
+                <span id="flag" style="color:#0A6FCD"></span>
+                <span id="load" style="background:#DD0000 ;color:#FFFFFF;height:1.6em;line-height:1.6em;overflow:hidden;position:absolute;right:0px;top:0px;width:75px;z-index:100;display:none"><B>LOADING...</B></span>
+                <!--<span style="float: right"><img id="load" src="../Public/images/ajax_load.gif"  style="display:none" /></span> -->
+                </div>
+                </form>
+                </div>
+				</notme>
+                  <ol id="wall-ul">
+                     <volist name="space:walls" id="gbook">
+                      <li id="0{$gbook.id}" >
+                        <div class="post">
+                          <p class="image"> <a href="__APP__/space/{$gbook.guestId}"> <img src="{$gbook.guestId|getUserFace}" alt="{$gbook.guestId|getUserName}" width='48' /> </a> </p>
+                          <div class="info">
+						  <span class="author"><a href="__APP__/space/{$gbook.guestId}">{$gbook.guestId|getUserName}</a> ({$gbook.guestId|getUserProvince})</span>
+						  <span class="time">{$gbook.cTime|friendlyDate}</span>
+                          <me id="userId"><span class="actions"><a href="__APP__/Wall/index/re/{$gbook.id}/id/{$gbook.guestId}">回复</a></span></me>
+						  <me id="gbook.guestId"><span class="delete"><a class="Qconfirm" id="{$gbook.id}" rel="/index.php/Wall/delete" href="javascript:void(0)"  title="确定要删除?">删除</a>
+					      </span> </me>
+                          </div>
+                          <div class="content"> {$gbook.content|t} </div>
+                        </div>
+                      </li>
+                    </volist>
+                  </ol>
+                </div>
+              </div>
+			  <php>}else{</php>
+			  <div id="pf-wall" class="sect">
+			  <h3>留 言</h3>
+			  <div class="sect-content">由于该用户的隐私设置，你不能访问！</div>
+			  </div>
+			  <php>}</php>
+            </div>
+          </div>
+	      <div class="mc-ft more-act">
+            <div class="ma-b1"> </div>
+	        <div class="ma-b2"> <a href="javascript:void(0);" class="share" rel="__APP__/Share/user/id/{$uid}" onclick="$.facebox.click(this);">分享</a> </div>
+          </div>
+		</div>
+		<php>}</php>
+	  <!-- /content -->
+  </div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

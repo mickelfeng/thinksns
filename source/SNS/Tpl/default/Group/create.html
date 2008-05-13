@@ -1,0 +1,95 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+
+<div id="title">
+	<h2>创建群组</h2>
+</div>
+<div id="header">
+	<div id="toc"><ul><li class="current"><a href="#">第一步：群组信息</a></li>
+	<li class="dummy">第二步：群组头像</li><li class="dummy">第三步：群组成员</li></ul></div></div>
+<div class="groupinfo">
+	 <form action="__APP__/Group/doCreate" method="post" enctype="application/x-www-form-urlencoded" name="doStep1">
+	<table class="form-layout"><tbody>
+		<tr>
+
+			<th>名称：</th>
+			<td>
+				 
+					<input name="name" type="text"  class="f-text" maxlength="15" value=""  id="name" />
+					<p>最多 15 个字，创建以后不能修改。</p>
+							</td>
+		</tr>
+		<tr>
+			<th>公告栏：</th>
+
+			<td><textarea name="intro" maxlength="500" id="intro"></textarea></td>
+		</tr>
+		<tr>
+			<th>网络属性：</th>
+			<td>
+				<select name="network" id="network"><option value="global">全站</option></select>				<p>创建以后不能修改。</p>
+
+							</td>
+		</tr>
+		<tr>
+			<th>类型：</th>
+			<td>
+				<dl>
+					<dt><label><input name="open" type="radio" value="1" checked="checked" /> 公开</label></dt>
+
+					<dd>
+						<p>群组内容完全公开，随时可以加入。</p>
+					</dd>
+					<dt><label><input name="open" type="radio" value="2" disabled="disabled" /> 半公开</label></dt>
+					<dd>
+						<p>非成员可以浏览群组资料，不能查看讨论区，需要批准才能加入。</p>
+					</dd>
+
+					<dt><label><input name="open" type="radio" value="3" disabled="disabled" /> 私密</label></dt>
+					<dd>
+						<p>只有成员才能看到群组，非成员需要接受成员的邀请后才能加入。</p>
+					</dd>
+				</dl>
+			</td>
+		</tr>
+
+		<tr>
+			<th></th>
+			<td>
+			<input type="submit" class="f-button" value="创建群组" />
+						</td>
+		</tr>
+	</tbody></table>
+	</form>
+
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

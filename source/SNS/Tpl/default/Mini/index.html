@@ -1,0 +1,95 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title><me id="uid">我<else />{$uid|getUserName}</me>的心情 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="header">
+                <p class="image"><a href="__APP__/space/{$uid}"><img src="{$uid|getUserFace}" width="48" /></a></p>
+                <h2><me id="uid">我<else />{$uid|getUserName}</me>的心情</h2>
+                <p class="actions"><a href="__APP__/space/{$uid}"><me id="uid">我<else />{$uid|getUserName}</me>的空间</a></p>	
+             	<div id="toc">
+                    <ul>
+					<me id="uid">
+						<li><a href="__APP__/Mini/friends">好友心情</a></li>
+						<li class="current"><a href="__APP__/Mini/index/id/{$mid}">我的心情</a></li>
+					<else />
+						<li class="current"><a href="__APP__/Mini/index/id/{$uid}">{$uid|getUserName}的心情</a></li>
+						<li><a href="__APP__/Mini/friends">好友心情</a></li>
+						<li><a href="__APP__/Mini/index/id/{$mid}">我的心情</a></li>
+					</me>                    	
+                    </ul>
+                    <p class="bar"><span id="xqnum">{$count}</span> 次更新</p>
+                </div>
+            </div>
+ 			<!-- main -->
+ 			<div class="ui-t2">
+	<div class="ui-gf">
+
+			<div class="mb-post">
+			<h3>看看 <me id="uid">我<else />{$uid|getUserName}</me> 最近的心情怎么样</h3>
+			
+			<form action="__APP__/Mini/insert" method="post" enctype="application/x-www-form-urlencoded" name="mini">
+				<textarea name="content" rows="5" cols="50" id="mbcontent"  onKeyDown="fot(this)" onKeyUp="fot(this)"></textarea>
+				<p>
+					<span id="mb-hint">可以输入<b><span id="zishu">100</span></b>字</span>
+
+					<input type="button" id="ajaxminimy" class="f-button" value="发 布"/>
+					<span id="flag"></span>
+				</p>
+			</form>
+		</div>
+		<div id="xqlist">
+		 <volist name="mini" id="vo">
+						<ol class="minibloglist" id="0{$vo.id}">
+						<li>
+				<div class="miniblog-entry na">
+					<div class="content">
+						{$vo.content}<span class="time">{$vo.cTime|friendlyDate}</span><span class="subinfo">通过网页</span>
+						<span class="delete"><me id='uid'><a class="Qconfirm" id="{$vo.id}" rel="/index.php/Mini/delete" href="javascript:void(0)"  title="确定要删除?">删除</a></me></span>		
+					</div>
+				</div>
+			</li>
+				</ol>
+				</volist>
+			</div>	
+				<div class="pagination">{$page}</div>
+					</div>
+	<div class="ui-g">
+		<div id="miniblog-explain">
+			<h4>什么是心情？</h4>
+			<p>一句话心情，记录生活点滴，可用网页、MSN、GTalk或手机发布。</p>
+		</div>
+		<div class="bounds">
+
+		<p><span><img src="http://static.hainei.com/img/ico-wlm-d.gif" alt="MSN" title="绑定MSN" /><img src="http://static.hainei.com/img/ico-gtalk-d.gif" alt="GTalk" title="绑定GTalk" /><img src="http://static.hainei.com/img/ico-mobile-d.gif" alt="手机" title="绑定手机" /></span></p>
+		<h4>短信发布迷你博客</h4><p>绑定手机，就可以发送短信更新心情。(只需支付普通短信资费)</p>
+		<h4>通过 MSN/GTalk 发布</h4><p>绑定 MSN/GTalk，就可以使用 MSN/GTalk 随时随地发布心情。</p>		
+		</div>
+	</div>
+</div>
+			
+	  <!-- /main -->
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

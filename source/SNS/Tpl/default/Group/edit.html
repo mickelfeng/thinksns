@@ -1,0 +1,68 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="title">
+	<h2>{$vo.name}</h2>
+</div>
+<div id="header">
+	<div id="toc">
+	<ul>
+	<li class="current"><a href="__APP__/Group/edit/id/{$vo.id}">群组信息</a></li>
+	<li><a href="__APP__/Group/picture/id/{$vo.id}">群组头像</a></li>
+	<li><a href="__APP__/Group/member/id/{$vo.id}">群组成员</a></li>
+	<li class="alt"><a href="__APP__/Group/show/id/{$vo.id}">返回群组</a></li>
+	</ul>
+	</div>
+</div>
+<div class="groupinfo">
+	<form action="__APP__/Group/update" method="post">
+	<table class="form-layout"><tbody>
+		<tr>
+			<th>名称：</th>
+			<td>
+			<p>{$vo.name}</p>
+			</td>
+		</tr>
+		<tr>
+			<th>群公告：</th>
+			<td><textarea name="intro" rows="5" cols="50" maxlength="500">{$vo.intro}</textarea></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+			<input type="submit" class="f-button" value="保存设置" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			</td>
+		</tr>
+	</tbody></table>
+	</form>
+	</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

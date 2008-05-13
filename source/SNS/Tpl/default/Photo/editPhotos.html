@@ -1,0 +1,72 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        <div id="title">
+			<h2>{$album.title}</h2>
+		</div>
+		<div id="header">
+            <div id="toc">
+                <ul>
+                <li><a href="__APP__/Photo/editAlbum/albumId/{$album.id}">编辑相册信息</a></li>
+                <li class="current"><a href="__APP__/Photo/editPhotos/albumId/{$album.id}">编辑照片</a></li><!-- 空相册不显示 -->
+                <li><a href="__APP__/Photo/uploads/albumId/{$album.id}">上传更多照片</a></li>
+                <li class="alt"><a href="__APP__/Photo/album/albumId/{$album.id}">返回相册</a></li>
+                </ul>
+                <p class="bar">已有 {$album.photoCount} 张照片</p><!-- 空相册不显示 -->
+            </div>
+		</div>
+        <!-- wrap -->
+        <div id="wrap">
+        <form action="__APP__/Photo/doEditPhotos" method="post" id="photo-edit">
+            <ul>
+            <volist name="list" id="vo" empty="没有图片">
+                <li>
+                <div class="pe-thumb">
+                    <p><img src="__PUBLIC__/Thumb/?w=136&h=136&t=f&url={$vo.imagePath}" alt="#" /></p>
+                    <p><label for="p-cov-{$vo.id}"><input type="radio" name="coverPhotoId" value="{$vo.id}" id="p-cov-{$vo.id}"/> 设置为封面</label></p>
+                    <p><label for="p-del-{$vo.id}"><input type="checkbox" name="delete[{$vo.id}]" class="checkbox" id="p-del-{$vo.id}" /> 删除</label></p>
+                </div>
+                <div class="pe-info">
+                    <p>描述：</p>
+                    <p><textarea name="info[{$vo.id}]" maxlength="1000">{$vo.info}</textarea></p>
+                </div>
+                </li>
+            </volist>
+            </ul>
+            <p class="act">
+            <input type="hidden" name="albumId" value="{$vo.albumId}" />
+            <input type="submit" class="f-button" value="保存编辑" />
+            <input type="button" class="f-alt" value="返回相册" onClick="window.location='__APP__/Photo/album/albumId/{$vo.albumId}'"/>
+            </p>
+        </form>
+        </div>
+        <!-- /wrap -->
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

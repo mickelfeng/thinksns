@@ -1,0 +1,73 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="header">
+				<p class="image"><a href="__APP__/space/{$mId}"><img src="{$userId|getUserFace}" width="48" /></a></p>
+                <h2>我的相册</h2>
+                <p class="actions"><a href="__APP__/photos/{$mId}">返回我的相册</a></p>	
+                <div id="toc">
+                    <ul>
+                        <li class="current"><a href="__APP__/Photo/create">创建新相册</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="album-create">
+                <form action="__APP__/Photo/doCreateAlbum" method="post" enctype="application/x-www-form-urlencoded" name="createAlbum">
+                <table class="form-layout"><tbody>
+                    <tr>
+                        <th>相册名</th>
+                        <td><input type="text" class="f-text" name="title" /></td>
+                    </tr>
+                    <tr>
+                        <th>描 述</th>
+                        <td><textarea name="info"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>隐 私</th>
+                        <td>
+                            <select name="status">
+                                <option value="0" selected="selected">全站用户可见</option>
+                                <option value="1">相同网络用户及好友可见</option>
+                                <option value="2">仅好友可见</option>
+                                <option value="3">仅自己可见</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td class="fl-act">
+                            <input type="submit" class="f-button" value="创建相册" />
+                        </td>
+                    </tr>
+                </tbody></table>
+                </form>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

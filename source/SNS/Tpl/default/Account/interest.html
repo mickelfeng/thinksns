@@ -1,0 +1,57 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	#defaultTags a {margin:2px 6px;}
+	#tags {}
+	.selected {background: #0066FF; color:#fff;}
+	.addition {margint-top:2em; text-align:right;}
+</style>
+<title>兴趣爱好修改 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+
+	<include file="../Public/top" />
+	<html:import type="js" file="Js.Lib.jquery_tagto" /> 
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#defaultTags").tagTo("#tags");
+	});
+	</script>
+	<include file="../Public/left" />
+	
+	<div id="container">
+		
+		<div id="content">
+			<div id="toc"><ul><li><a href="__APP__/Account/basic">基本信息</a></li>
+			<li><a href="__APP__/Account/contact">联系信息</a></li>
+			<li class="current"><a href="__APP__/Account/interest">兴趣爱好</a></li>
+			<li><a href="__APP__/Account/education">教育信息</a></li>
+			<li><a href="__APP__/Account/work">工作信息</a></li>
+			<li><a href="__APP__/Account/face">上传头像</a></li>
+			</ul></div><form action="__APP__/Account/doChangeInterest" method="post" enctype="application/x-www-form-urlencoded" name="doChangeInterest" class="nf" id="account-personal">
+				<p class="note">你可以通过<a href="__APP__/Account/privacy">隐私设置</a>控制谁可以看见以下内容<br />点击下面的标签或手动填写您的兴趣爱好<br />
+				<span id="defaultTags"><a href="#">美食</a> <a href="#">旅游</a> <a href="#">投资</a> <a href="#">运动</a> <a href="#">汽车</a> <a href="#">音乐</a><br /> <a href="#">电影</a> <a href="#">书籍</a> <a href="#">游戏</a> <a href="#">摄影</a> <a href="#">吸烟</a> <a href="#">品酒</a></span><br />(自由添加，用逗号分割)
+				</p>
+
+				<p>
+					<label class="f-label" for="p-favorite">兴趣爱好</label>
+					<textarea name="tags"  id="tags" rows="5" cols="50">{$interest.tags}</textarea>
+					<span class="hint hidden">最多 200 个汉字</span>
+				</p>
+				<p class="act">
+					<input name="Submit" type="submit" class="f-button" value="保存" />
+				</p>
+			</form>
+		</div>
+	
+	</div>
+	<include file="../Public/footer" />
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	
+	<include file="../Public/top" />
+
+	<include file="../Public/left" />
+
+	<div id="container">
+	
+		<div id="content">
+
+<div id="toc">
+	<ul><li class="current"><a href="__APP__/Message/index">收件箱</a></li>
+	<li><a href="__APP__/Message/sendbox">发件箱</a></li>
+	<li><a href="#">通知</a></li>
+	<li class="alt"><a href="__APP__/Message/send">写私信</a></li>
+	</ul>	<p class="bar">{$msgNum}封私信</p>
+
+</div>
+<div id="pmsg">
+		<div class="pm-bd">
+		<table id="pmlist">
+			<tbody>
+			 <volist name="list" id="vo" empty="没有消息">
+				<tr>
+					<td class="sel"></td>
+					<td class="ava"><a href="__APP__/space/{$vo.fromUserId}"><img src="{$vo.fromUserId|getUserFace}" alt="{$vo.fromUserId|getUserName}" width="48" /></a></td>
+					<td class="per"><a href="__APP__/space/{$vo.fromUserId}">{$vo.fromUserId|getUserName}</a>	<span class="time">{$vo.cTime|friendlyDate}</span></td>
+					<td class="title"><a href="__APP__/Message/read/id/{$vo.id}"><eq name="vo.status" value="0"><strong>[未读] {$vo.title|getShort="20"}</strong><else />{$vo.title|getShort="20"}</a></eq><a href="#" class="summary">{$vo.content|getShort="40"}</a></td>
+					<td class="act"><a href="#" rel="" class="pm-del">删除</a></td>
+				</tr>
+			</volist>	
+			</tbody>			
+		</table>
+		<div class="pagination">{$page}</div>	
+</div>
+</div>
+	</div>
+	
+	</div>
+	<include file="../Public/footer" />
+
+</div>
+</body>
+</html>

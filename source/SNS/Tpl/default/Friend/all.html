@@ -1,0 +1,64 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="header">
+                <p class="image"><a href="__APP__/Space/index/id/{$userId}"><img src="{$userId|getUserFace}" width="48" /></a></p><h2>{$userId|getUserName}</h2>
+                <p class="actions"><a href="__APP__/Space/index/id/{$userId}">{$userId|getUserName}的空间</a></p>	
+                <div id="toc">
+                    <p class="bar">{$friendNum} 位好友</p>
+              </div>
+            </div>
+            <div id="wrap">
+                <ol class="il">
+                <volist name="list" id="vo" empty="还没有好友">
+                <li>
+                <div class="people">
+                    <p class="image">
+                    <a href="__APP__/Space/index/id/{$vo.friendId}"><img src="{$vo.friendId|getUserFace='m'}" alt="{$vo.friendId|getUserName}" width="96" /></a>
+                    </p>
+                    <table class="info">
+                        <caption><a href="__APP__/Space/index/id/{$vo.friendId}">{$vo.friendId|getUserName}</a>  {$vo.friendId|getOnlineStatus}</caption>
+                        <tr><th>地 区：</th><td>{$vo.friendId|getUserProvince}</td></tr>
+                        <tr><th>心 情：</th><td>{$vo.friendId|getUserNews}</td></tr>
+                    </table>
+                    <ul class="actions">
+                    <li><a href="__APP__/Message/send/to/{$vo.friendId}">发送私信</a></li>
+                    <li><a href="__APP__/Index/hello/to/{$vo.friendId}">打招呼</a></li>
+                    <li><a href="__APP__/Space/index/id/{$vo.friendId}">查看空间</a></li>
+                    <li><a href="__APP__/Friend/add/id/{$vo.friendId}">加为好友</a></li>
+                    </ul>
+                </div>
+                </li>
+                </volist>
+                </ol>
+                <div class="pagination">{$page}</div>
+            </div>
+        </div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+		    <div id="toc">
+                <ul>
+                <li><a href="__APP__/Friend/index">我的好友</a></li>
+                <li><a href="__APP__/Friend/invite">邀请好友</a></li>
+                <li><a href="__APP__/Friend/search">搜索好友</a></li>
+                 <li class="current"><a href="__APP__/Friend/grabber">寻找好友</a></li>
+                </ul>
+            </div>
+			<div class="block">
+			<h3>你向以下 Email 地址发送了邀请</h3>
+			<ul>{$info}</ul>
+			</div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

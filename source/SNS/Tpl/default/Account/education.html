@@ -1,0 +1,72 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>教育信息修改 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+	<div id="doc">
+
+		<include file="../Public/top" /> 
+		<include file="../Public/left" />
+
+		<div id="container">
+			<div id="content">
+				<div id="toc"><ul><li><a href="__APP__/Account/basic">基本信息</a></li>
+				<li><a href="__APP__/Account/contact">联系信息</a></li>
+				<li><a href="__APP__/Account/interest">兴趣爱好</a></li>
+				<li class="current"><a href="__APP__/Account/education">教育信息</a></li>
+				<li><a href="__APP__/Account/work">工作信息</a></li>
+				<li><a href="__APP__/Account/face">上传头像</a></li>
+				</ul></div>
+
+				<form action="__APP__/Account/doChangeEducation" method="post" enctype="application/x-www-form-urlencoded" name="doChangeEducation" class="nf" id="account-education">
+				<p class="note">填写学校信息，在办公圈找到老同学<br />可以通过<a href="__APP__/Account/privacy">隐私设置</a>控制谁可以看见以下内容</p>
+				<div id="college">
+						<div id="college_0" class="college">
+						<p>
+							<label class="f-label">类型：</label>
+							<select name="school_type" id="school_type">
+								  <option value="h">初/高中</option>
+								  <option value="u">大学</option>
+								  <option value="m">硕士研究生</option>
+								  <option value="d">博士研究生</option>
+							</select>
+						</p>
+						<p>
+							<label class="f-label">大学：</label>
+							<input name="school_name" type="text" class="f-text" id="school_name" value="{$edu.school_name}"/>
+							入学时间：
+							<input name="school_in" type="text" class="f-text" id="school_in" style="width:30px;" value="{$edu.school_in}" size="4" /> 年</p>
+
+						
+
+					</div>
+						
+				  
+						
+						
+					</div>
+
+				<p class="act">
+					<input name="Submit" type="submit" class="f-button" value="保存"  id="Submit" />
+				</p>
+				</form>
+			</div>
+		
+		</div>
+		<include file="../Public/footer" />
+	</div>
+	<script type="text/javascript">
+	<!--
+	$(document).ready(function()
+	{
+		$('#school_type option[@value="{$edu.school_type}"]').attr('selected','selected');
+	});
+	//-->
+	</script>
+</body>
+</html>

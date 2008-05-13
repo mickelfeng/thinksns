@@ -1,0 +1,79 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>隐私设定 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+
+	<!-- top -->
+	<include file="../Public/top" />
+	<!-- /top -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div class="block">
+	<h3>隐私设置</h3>
+	<p class="note">你可以完全控制哪些人可以看到你的空间、迷你博客、照片等。</p>
+	<form action="__APP__/Account/setPrivacy" method="post" enctype="application/x-www-form-urlencoded" name="setPrivacy" class="nf">
+	<p><label class="f-label">我的空间</label>
+	<select name="privacy_space" id="privacy_space">
+		<option value="1" selected="selected">相同网络、群组用户可见</option>
+		<option value="2">仅对好友可见</option>
+		<option value="3">对所有人可见</option>
+	  </select></p>
+	<p><label class="f-label">详细资料</label> <select name="privacy_profile" id="privacy_profile">
+		<option value="1" selected="selected">相同网络、群组用户可见</option>
+		<option value="2">仅对好友可见</option>
+		<option value="3">对所有人可见</option>
+	  </select></p>
+	<p>
+	  <p><label class="f-label">好友列表</label> <select name="privacy_friend" id="privacy_friend">
+		<option value="1" selected="selected">相同网络、群组用户可见</option>
+		<option value="2">仅对好友可见</option>
+		<option value="3">对所有人可见</option>
+	  </select></p>
+	  <p><label class="f-label">留言板</label> <select name="privacy_wall" id="privacy_wall">
+		<option value="1" selected="selected">相同网络、群组用户可见</option>
+		<option value="2">仅对好友可见</option>
+		<option value="3">对所有人可见</option>
+	  </select></p>
+	<p class="act">
+		<input name="Submit" type="submit" class="f-button" value="保存设置" />
+	</p>
+	</form>
+</div>
+
+	</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+<script type="text/javascript">
+<!--
+$(document).ready(function()
+{
+	$('#privacy_space option[@value="{$privacy.privacy_space}"]').attr('selected','selected');
+	$('#privacy_profile option[@value="{$privacy.privacy_profile}"]').attr('selected','selected');
+	$('#privacy_education option[@value="{$privacy.privacy_education}"]').attr('selected','selected');
+	$('#privacy_work option[@value="{$privacy.privacy_work}"]').attr('selected','selected');
+	$('#privacy_friend option[@value="{$privacy.privacy_friend}"]').attr('selected','selected');
+	$('#privacy_wall option[@value="{$privacy.privacy_wall}"]').attr('selected','selected');
+	$('#privacy_mini option[@value="{$privacy.privacy_mini}"]').attr('selected','selected');
+	$('#privacy_blog option[@value="{$privacy.privacy_blog}"]').attr('selected','selected');
+	$('#privacy_share option[@value="{$privacy.privacy_share}"]').attr('selected','selected');
+	$('#privacy_group option[@value="{$privacy.privacy_group}"]').attr('selected','selected');
+});
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<div id="sayhello">
+<div class="content">
+<img src="{$toUserId|getUserFace='m'}" width="96" />
+将和 <strong>{$toUserId|getUserName}</strong> 成为好友！
+</div>
+<div class="bottom">
+<form name="hello" method="post" action="__APP__/Index/sayHello">
+<input type="button" value="确定" class="fb-yes" id="say-hello" onclick="addFriend({$toUserId})" />
+<input type="button" value="取消" class="fb-no" id="close-hello" onclick="$.facebox.close()" />
+</form>
+</div>
+</div>

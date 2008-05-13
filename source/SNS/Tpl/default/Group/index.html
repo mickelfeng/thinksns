@@ -1,0 +1,76 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+
+<div id="header">
+	<p class="image"><a href="__APP__/space/{$mid}"><img src="{$mid|getUserFace}" alt="{$mid|getUserName}" width="48" /></a></p>
+	<h2>群组</h2>
+	<p class="actions"><a href="__APP__/space/{$userId}">我的空间</a></p>
+	<div id="toc">
+		<ul>
+			<li class="current"><a href="#">群组最新动态</a></li>
+			<li><a href="__APP__/Group/my">我的群组</a></li>
+
+			<li><a href="__APP__/Group/lists">群组列表</a></li>
+		</ul>
+		<div class="shortcut">
+			<form action="__APP__/Group/lists" method="get" enctype="application/x-www-form-urlencoded" name="groupSearch" target="_self">
+				<p>
+					
+					<input name="name" type="text"  class="f-text"  id="name" /> 
+					<input name="Submit" type="submit" class="f-button" value="搜索群组" />
+				</p>
+
+			</form>
+		</div>
+	</div>
+</div>
+					<div id="board-topic-list">
+			<table class="board-topic-list">
+				<caption>最近讨论的主题</caption>
+				<tr>
+					<th class="title">主题</th>
+
+					<th class="parent">群组</th>
+					<th class="author">作者<span class="count">回复数</span></th>
+					<th class="replier">最后发言<span class="time">发言时间</span></th>
+				</tr>
+				<volist name="list" id="vo" empty="你所在的群，还没有任何主题。">
+				<tr>
+					<td class="title"><eq name="vo.top" value="1">[置顶]</eq> <a href="__APP__/Group/thread/id/{$vo.id}">{$vo.title}</a></td>
+					<td class="parent"><a href="__APP__/Group/show/id/{$vo.recordId}">{$vo.recordId|getGroupName}</a></td>
+					<td class="author"><a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a><span class="count">{$vo.replyCount}</span></td>
+					<td class="replier"><a href="__APP__/space/{$vo.lastReplyUserId}">{$vo.lastReplyUserId|getUserName}</a><span class="time">{$vo.lastReplyTime|friendlyDate}</span></td>
+				</tr>
+				</volist>
+			</table>
+			</div>
+			</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

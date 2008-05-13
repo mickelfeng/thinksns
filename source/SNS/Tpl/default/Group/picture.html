@@ -1,0 +1,61 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="title">
+	<h2>{$vo.name}</h2>
+</div>
+<div id="header">
+	<div id="toc"><ul>
+	<li><a href="__APP__/Group/edit/id/{$vo.id}">群组信息</a></li>
+	<li class="current"><a href="__APP__/Group/picture/id/{$vo.id}">群组头像</a></li>
+	<li><a href="__APP__/Group/member/id/{$vo.id}">群组成员</a></li>
+	<li class="alt"><a href="__APP__/Group/show/id/{$vo.id}">返回群组</a></li>
+	</ul></div></div>
+<div id="picture-container">
+	<div id="pictureCurrent">
+		<h3>当前头像</h3>
+		<img src="__PUBLIC__/Thumb/?w=192&h=300&url={$vo.cover}" alt="群组头像" />
+	</div>
+	<div id="pictureUpload">
+		<h3>上传头像</h3>
+		<p>支持 JPG、GIF 和 PNG 格式的照片，每张最大 4M。</p>
+		<form id="step2" name="step2" method="post" action="__APP__/Group/doChangeFace" enctype="multipart/form-data">
+			<p>
+			<input type="hidden" name="uploadFileType" value="jpg,gif,png,jpeg" />
+            <input type="hidden" name="id" value="{$vo.id}" />
+			<input name="files[]" id="cover" type="file" class="f-file" /></p>	
+			<p>
+			<input name="Submit" type="submit" class="f-button"  id="Submit" value="上传头像" />
+			</p>
+		</form>
+	</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

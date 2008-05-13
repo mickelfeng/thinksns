@@ -1,0 +1,57 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>联系信息修改 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="toc"><ul><li><a href="__APP__/Account/basic">基本信息</a></li>
+			<li class="current"><a href="__APP__/Account/contact">联系信息</a></li>
+			<li><a href="__APP__/Account/interest">兴趣爱好</a></li>
+			<li><a href="__APP__/Account/education">教育信息</a></li>
+			<li><a href="__APP__/Account/work">工作信息</a></li>
+			<li><a href="__APP__/Account/face">上传头像</a></li>
+			</ul></div>
+
+			<form action="__APP__/Account/editContact" method="post" enctype="application/x-www-form-urlencoded" name="editContact" class="nf" id="account-contact">
+			<p class="note">每一项联系信息的都可以单独设置隐私，请放心填写</p>
+				<div class="bound">
+					<label class="f-label">Email</label>
+					<ul>
+					<li><span class="item">{$user.email}</span><span class="privacy"><span>仅自己可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</span></li>		</ul>
+				</div>
+				<hr />
+			<p><label for="msn" class="f-label">MSN</label><input name="msn" type="text"  class="f-text" id="msn" value="{$contact.msn}"  size="30" /><span class="privacy">仅自己可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="gtalk" class="f-label">GTalk</label><input name="gtalk" type="text" class="f-text" id="gtalk" value="{$contact.gtalk}" size="30" /><span class="privacy">仅自己可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="qq" class="f-label">QQ</label><input name="qq" type="text" class="f-text" id="qq" value="{$contact.qq}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p><p><label for="skype" class="f-label">Skype</label><input name="skype" type="text" class="f-text" id="skype" value="{$contact.skype}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="skype" class="f-label">Yahoo!</label><input name="yahoo" type="text" class="f-text"  id="yahoo" value="{$contact.yahoo}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<hr /><p><label for="mobile" class="f-label">手机</label><input name="cell" type="text"  class="f-text" id="cell" value="{$contact.cell}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="landphone" class="f-label">电话</label><input name="tel" type="text" class="f-text"  id="tel" value="{$contact.tel}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p><hr /><p><label for="address" class="f-label">住址</label><input name="address" type="text" class="f-text"  id="address" value="{$contact.address}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="address" class="f-label">BLOG</label><input name="blog" type="text" class="f-text"  id="blog" value="{$contact.blog}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>
+			<p><label for="website" class="f-label">个人网址</label><input name="homepage" type="text" class="f-text" id="homepage" value="{$contact.homepage}" size="30" /><span class="privacy">仅好友可见</span> (<a class="privacy-setting" href="#" rel="#">修改</a>)</p>	<p class="act">
+
+					<input name="Submit22" type="submit" class="f-button" value="保存" />
+				</p>
+			</form>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

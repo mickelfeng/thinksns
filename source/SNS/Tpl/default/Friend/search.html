@@ -1,0 +1,82 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="toc">
+			    <ul>
+                <li><a href="__APP__/Friend/index">我的好友</a></li>
+                <li><a href="__APP__/Friend/invite">邀请好友</a></li>
+				<li class="current"><a href="__APP__/Friend/search">搜索好友</a></li>
+				<li><a href="__APP__/Friend/grabber">寻找好友</a></li>
+                </ul>
+            </div>
+			 
+					<form action="__APP__/Friend/search" method="POST" enctype="application/x-www-form-urlencoded">
+                     <p style="padding:10px;">
+					请输入用户姓或者名字进行搜索：
+					<input name="keyword" type="text" class="f-text" size="20">
+					<input name="Submit" type="submit" class="f-button" value="搜 索">
+                     </p>
+					</form>
+				
+			  <div id="wrap">
+           		<ol class="il">
+                  <volist name="list" id="vo" empty="没有数据">
+					<li>
+					<div class="people">
+						<p class="image">
+						<a href="__APP__/space/{$vo.id}"><img src="{$vo.id|getUserFace='m'}" alt="{$vo.id|getUserName}" width='96' /></a>
+						</p>
+						<table class="info">
+							<caption style='line-height:30px'><a href="__APP__/space/{$vo.id}">{$vo.id|getUserName}</a>  &nbsp;&nbsp;&nbsp;&nbsp;{$vo.id|getOnlineStatus}</caption>
+							<tr><th>城 市：</th><td>{$vo.id|getUserProvince}</td></tr>
+							<tr><th>行 业：</th><td>{$vo.id|getUserNetwork}</td></tr>
+							<tr><th>心 情：</th><td>{$vo.id|getUserNews}</td></tr>
+						</table>
+						<ul class="actions">
+						<li><a href="__APP__/Message/send/uid/{$vo.id}">发送私信</a></li>
+						<li><a href="__APP__/Friend/hello/to/{$vo.id}">打招呼</a></li>
+						<li><a href="__APP__/Space/index/id/{$vo.id}">查看空间</a></li>
+						<isFriend id="vo.id">
+						<else />
+						<li><a href="__APP__/Friend/add/id/{$vo.id}">加为好友</a></li>
+						</isFriend>
+						</ul>
+					</div>
+					</li>
+                  </volist>
+				  </ol>
+				  <div class="pagination">{$page}</div>
+				</div>
+                  <!-- /list -->
+                </td>
+              </tr>
+          </table>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

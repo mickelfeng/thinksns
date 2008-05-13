@@ -1,0 +1,93 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>帐号信息修改 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<include file="../Public/top" />
+	<include file="../Public/left" />
+	<div id="container">
+		<div id="content">
+			<div id="toc">
+			<ul>
+			<li class="current"><a href="__APP__/Account/account">账号设置</a></li>
+			<li><a href="__APP__/Account/network">网络设置</a></li>
+			</ul>
+			</div>
+			<div class="sect-set">
+				<div class="sect">
+					<h3>姓名</h3>
+					<div class="sect-brief">
+						<p>姓名可使用最少 2 个汉字或4个字符，最多6个汉字或12个字符。</p>
+						<p class="tip">&nbsp;</p>
+					</div>
+					<div class="sect-content">
+					<form action="__APP__/Account/doChangeName" method="post" enctype="application/x-www-form-urlencoded" name="changeName" id="changeName" class="nf" >
+							<p>
+								<label class="f-label" for="realname">姓名</label>
+								<input name="name" type="text" class="f-text" value="{$user.name}" maxlength="12" />
+							</p>
+							<p class="act">
+								<input name="changeName" type="submit" class="f-button" value="修改姓名" />
+							</p>
+						</form>
+					</div>
+				</div>
+				<div class="sect">
+					<h3>Email</h3>
+					<div class="sect-brief">
+						<p>用于登录和联系，必须是合法的地址。</p>
+						<p class="tip">&nbsp;</p>
+					</div>
+					<div class="sect-content">
+						<form method="post" action="__APP__/Account/doChangeEmail" id="changeEmail" class="nf">
+							<div class="bound">
+								<label class="f-label">登录 Email</label>
+								<ul id="email-switcher">
+									<li><label class="f-check"><input name="radiobutton" type="radio" value="radiobutton" checked="checked" />{$user.email}</label></li>						<li><label><input name="radiobutton" type="radio" value="radiobutton" disabled="disabled" /></label> <input name="email" type="text" disabled="disabled"  id="email" value="尚未开放此功能" class="f-text" size="30" /></li>
+								</ul>
+							</div>
+							<p class="act">
+								<input name="changeName3" type="submit" class="f-button" value="修改 Email"  disabled="disabled" />
+							</p>
+						</form>
+					</div>
+				</div>
+				<div class="sect">
+					<h3>密码</h3>
+					<div class="sect-brief">
+						<p>建议使用尽量复杂的密码，最少 4 个字符。</p>
+						<p class="tip">&nbsp;</p>
+					</div>
+					<div class="sect-content">
+						<form action="__APP__/Account/doChangePassword" method="post" name="changePassword" id="changePassword" class="nf">
+							<p>
+								<label class="f-label" for="password">旧密码</label>
+								<input name="password" type="password"  id="password"  class="f-text"  maxlength="32" />
+							</p>
+							<p>
+								<label class="f-label" for="newpass">新密码</label>
+								<input name="newpassword" type="password" class="f-text" id="newpassword" maxlength="32" />
+							</p>
+							<p>
+								<label class="f-label" for="verifypass">重复新密码</label>
+								<input name="newpassword2" type="password" class="f-text" id="newpassword2" maxlength="32" />
+							</p>
+							<p class="act">
+								<input name="changePassword" type="submit" class="f-button" value="修改密码" />
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="../Public/footer" />
+</div>
+</body>
+</html>

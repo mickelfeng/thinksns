@@ -1,0 +1,150 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>办公圈 | 城市白领社区</title>
+<base target="_self" />
+</head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="header">
+                <p class="image">
+                <a href="__APP__/space/{$album.userId}"><img src="{$album.userId|getUserFace}" width="48" /></a>
+                </p>
+                <h2><me id="album.userId">我</me><notme id="album.userId">{$album.userId|getUserName}</notme>的相册<span class="pipe">-</span><em>{$album.title}</em></h2>
+                <p class="actions"><a href="__APP__/space/{$album.userId}"><me id="album.userId">我</me><notme id="album.userId">{$album.userId|getUserName}</notme>的空间</a></p>
+                <div id="toc">
+                    <p class="bar">
+                        {$photoCount} 张照片中的第 {$now} 张<span class="pipe">|</span>
+                        <a href="__PUBLIC__/../{$photo.imagePath}" target="_blank">查看原图</a>
+                        <span class="pipe">|</span>
+                        <a href="__APP__/Photo/album/albumId/{$album.id}">返回相册</a>
+                    </p>
+                    <p class="pager">
+                    <a href="__APP__/Photo/image/id/{$pre}">上一张</a>
+                    <span class="pipe">|</span>
+                    <a href="__APP__/Photo/image/id/{$next}">下一张</a>
+                    </p>
+                </div>
+            </div>
+            <div id="wrap">
+                <div class="photo-view">
+                    <span><a href="__APP__/Photo/image/id/{$next}"><img src="__PUBLIC__/Thumb/?w=600&h=1000&t=f&url={$photo.imagePath}" pid="{$photo.id}" /></a></span>
+                </div>
+                <div class="photo-desc">
+                    <div class="upload-dt">
+                        <!--a href="#" class="share p-share">分享</a-->
+                    </div>
+                    <div class="photo-from">
+                    <p>{$photo.info}</p>
+                    <span class="time">上传于 {$photo.cTime|friendlyDate='full'}</span>
+                    </div>
+
+                     <!-- Fantasy修改-->
+
+                    <p class="stat">{$photo.readCount} 次浏览 |<span id="plnum">{$commentCount}</span>个评论</p>
+                </div>
+                <div class="photo-info">
+                    <div class="photo-cmts">
+                        <ol id="threadlist">
+                        <volist name="comments" id="re">
+                      <!--   <li id="comment_{$re.id}"> -->
+			<li id="0{$re.id}">
+                        	<div class="post parent-post">
+                            	<p class="image"><a href="__APP__/space/{$re.userId}"><img src="{$re.userId|getUserFace}" alt="{$re.userId|getUserName}" width="48" /></a></p>
+                                <div class="info">
+                                    <span class="author"><a href="__APP__/space/{$re.userId}">{$re.userId|getUserName}</a> ({$re.userId|getUserProvince})</span>
+                                    <span class="time">{$re.cTime|friendlyDate}</span>
+                                    <me id="re.userId"><!--<span class="actions"><a href="#" rel="#" class="thread-reply">回复</a></span> -->
+                                    <span class="delete"><!-- <a href="#" rel="#" class="thread-del">删除</a> -->
+				    <a class="Qconfirm" id="{$re.id}" rel="/index.php/Comment/delete" href="javascript:void(0)"  title="确定要删除?">删除</a>
+				    </span></me>
+                                </div>
+                                <div class="content">{$re.content|cleanJs|ubb}</div>
+                            </div>
+                         </li>
+                         </volist>
+                         </ol>
+                        <div id="photo-comment" class="comment-post">
+                        <h4>发表评论<span id="load" style="display: none;color:red">Loading...</span></h4><a title="TOP" id="a_top" onClick="window.scrollTo(0,0);" href="javascript:;">TOP</a>
+                        <form action="__APP__/Comment/insert" method="post" id="replyparent">
+                        <p>
+                        <img onClick="insert(1)" src="__PUBLIC__/Images/biaoqing/1.gif"/>
+                        <img onClick="insert(2);" src="__PUBLIC__/Images/biaoqing/2.gif"/>
+                        <img onClick="insert(3)" src="__PUBLIC__/Images/biaoqing/3.gif"/>
+                        <img onClick="insert(4)" src="__PUBLIC__/Images/biaoqing/4.gif"/>
+                        <img onClick="insert(5)" src="__PUBLIC__/Images/biaoqing/5.gif"/>
+                        <img onClick="insert(6)" src="__PUBLIC__/Images/biaoqing/6.gif"/>
+                        <img onClick="insert(7)" src="__PUBLIC__/Images/biaoqing/7.gif"/>
+                        <img onClick="insert(8)" src="__PUBLIC__/Images/biaoqing/8.gif"/>
+                        <img onClick="insert(9)" src="__PUBLIC__/Images/biaoqing/9.gif"/>
+                        <img onClick="insert(10)" src="__PUBLIC__/Images/biaoqing/10.gif"/>
+                        <img onClick="insert(11)" src="__PUBLIC__/Images/biaoqing/11.gif"/>
+                        <img onClick="insert(12)" src="__PUBLIC__/Images/biaoqing/12.gif"/>
+                        <img onClick="insert(13)" src="__PUBLIC__/Images/biaoqing/13.gif"/>
+                        <img onClick="insert(14)" src="__PUBLIC__/Images/biaoqing/14.gif"/>
+                        <img onClick="insert(15)" src="__PUBLIC__/Images/biaoqing/15.gif"/>
+                        <img onClick="insert(16)" src="__PUBLIC__/Images/biaoqing/16.gif"/>
+                        <img onClick="insert(17)" src="__PUBLIC__/Images/biaoqing/17.gif"/>
+                        <img onClick="insert(18)" src="__PUBLIC__/Images/biaoqing/18.gif"/>
+                        <img onClick="insert(19)" src="__PUBLIC__/Images/biaoqing/19.gif"/>
+                        <br />
+			    <textarea name="content" id="p-cmt-body" rows="6" cols="60" maxlength="1000" style="width:470px;"></textarea></p>
+                            <p class="act">
+                                <input type="hidden" id="module" name="module" value="Photo" />
+                                <input type="hidden" id="recordId" name="recordId" value="{$photo.id}" />
+                                <input type="hidden" id="userId" name="userId" value="{$userId}" />
+
+				 <input type="hidden" id="userImg" value="{$userId|getUserFace}">
+				 <input type="hidden" id="userName" value="{$userId|getUserName}">
+				 <input type="hidden" id="userProv" value="{$userId|getUserProvince}">
+                                <!-- <input type="submit" class="f-button" value="发表"/> -->
+				<input type="button" id="ajaxcom" class="f-button" value="评 论"/>
+				<span id="flag"></span>
+
+			<!-- Fantasy修改-->
+                            </p>
+                        </form>
+                        </div>
+                    </div>
+                    <div class="pi-action">
+                        <ul class="actions">
+						<me id="album.userId">
+<!--                    <li><a href="javascript:void(0)" id="photo-starttag">开始圈人</a></li>
+                        <li class="pi-rotate" id="pi-rotate">
+                        <a href="javascript:void(0)" rel="#" class="pi-a-left">向左旋转</a>
+                        <a href="javascript:void(0)" rel="#" class="pi-a-right">向右旋转</a>
+            			</li> -->
+                        <li><a href="__APP__/Photo/editPhotos/albumId/{$album.id}/photoIds/{$photo.id}">编辑照片</a></li>
+                        <li><a href="__APP__/Photo/deletePhoto/id/{$photo.id}" rel="__APP__/Photo/deletePhoto/id/{$photo.id}" id="deleteId">删除照片</a></li>
+						</me>
+                        </ul>
+                    </div>
+                </div>
+            	</div>
+        	</div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

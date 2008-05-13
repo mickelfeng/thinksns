@@ -1,0 +1,72 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="title">
+	<h2>{$groupId|getGroupName}</h2>
+</div>
+<div id="header">
+	<div id="toc">
+		<ul>
+			<li class="current"><a href="#">成员列表</a></li>
+			<li class="alt"><a href="__APP__/Group/show/id/{$groupId}">返回群组</a></li>
+		</ul>
+		<p class="bar">{$count} 个成员</p>
+	</div>
+</div>
+<div id="wrap">
+		<div class="sect-content">
+		<ol class="il">
+		<volist name="list" id="vo">
+        <li>
+		<div class="people"><p class="image">
+		<a href="__APP__/space/{$vo.userId}"><img src="{$vo.userId|getUserFace='m'}" alt="{$vo.userId|getUserName}" width="96" /></a></p><table class="info"><caption>
+		<a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a>
+		<span class="network">({$vo.userId|getUserProvince})</span></caption>
+		<tr><th>心情：</th><td>{$vo.userId|getUserNews}</td></tr></table>
+		<ul class="actions">
+		<li><a href="__APP__/Message/send/to/{$vo.userId}">发送私信</a></li>
+		<li><a href="__APP__/space/{$vo.userId}">查看空间</a></li>
+		<php>if(isGroupManager($mid,$groupId)){</php>
+			<php>if(isGroupManager($vo->userId,$groupId)){</php>
+				<li><a href="__APP__/Group/down/groupId/{$groupId}/userId/{$vo.userId}">撤销管理员</a></li>
+			<php>}else{</php>
+				<li><a href="__APP__/Group/up/groupId/{$groupId}/userId/{$vo.userId}">提升为管理员</a></li>
+			<php>}</php>
+		<php>}</php>
+		</ul>
+		</div>
+		</li>
+        </volist>
+		</ol>
+	<div class="pagination">{$page}</div>
+	</div>
+	</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

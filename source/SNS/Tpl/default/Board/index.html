@@ -1,0 +1,98 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.comment_0{
+	margin-left:0px; width:100%;
+}
+.comment_1{
+	margin-left:50px; width:100%;
+}
+</style>
+<script type="text/javascript">
+<!--
+function reply(id){
+	$("#reply_"+id).html("<form action=__APP__/Comment/insert method=post><input type=hidden name=userId value={$loginUserId}><input type=hidden name=recordId value=1><input type=hidden name=module value=Board><input type=hidden name=replyType value=1><input type=hidden name=replyId value="+id+"><textarea name=content class=kk style=\"width:100%; height:30px;\"></textarea><br /> <input type=submit name=Submit value=回复 class=an_bg /> <input type=button name=Close value=取消 class=an_bg onclick=\"javascript:closeReply("+id+");\" /></form>");
+}
+function closeReply(id){
+	$("#reply_"+id).html("");
+}
+//-->
+</script>
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="title">
+	<h2>留言板</h2>
+</div>
+            
+			<div class="ui-t2" style="border-top:none;">
+	<div class="ui-gf">
+
+		<div class="mb-post">
+			<h3>在这里一起拥有一片蓝天</h3>
+			 <form action="__APP__/Comment/insert" method="post">
+			  <input type="hidden" name="userId" value="{$loginUserId}">
+                        <input type="hidden" name="recordId" value="1">
+                        <input type="hidden" name="module" value="Board">
+				<textarea name="content" rows="" class="kk" onClick="if(this.value=='留言内容请控制在120字符以内。'){this.value='';}">留言内容请控制在120字符以内。</textarea>
+				<p>
+					<span id="mb-hint">可以输入 <strong>120</strong> 字</span>	
+					<input name="Submit" type="submit"  class="f-button" value="发布" />
+				</p>
+			</form>
+		</div>
+		<ol id="wall-ul">
+		<volist name="comments" id="vo">
+		  <li>
+			<div class="post">
+			  <p class="image"> <a href="__APP__/space/{$vo.userId}"> <img src="{$vo.userId|getUserFace}" alt="{$gbook.guestId|getUserName}" width='48' /> </a> </p>
+			  <div class="info"> <span class="author"><a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a> ({$vo.userId|getUserProvince})</span> <span class="time">{$vo.cTime|friendlyDate}</span>
+				  <span class="actions"><!--a href="javascript:;" onClick="reply({$vo.replyId});">回复</a--></span> 
+				  <!--me id="vo.userId"><span class="delete"><a class="delete w-del" href="#" rel="#">删除</a></span></me-->
+			  </div>
+			  <div class="content">{$vo.content|t}</div>
+			</div>
+		  </li>
+		</volist>
+        </ol>
+					
+					
+		<div class="pagination">{$page}</div>	</div>
+
+	<div class="ui-g">
+		<div id="miniblog-explain">
+			<h4>我们需要您的支持</h4>
+			<p>每一天我们都在变，都在有新的东西和大家见面，这些离不开每一位朋友的积极参与，我们会做的更好。</p>
+		</div>
+		<div class="bounds">
+		<h4>赞助商支持</h4><p>赞助商</p>		
+		</div>
+
+	</div>
+</div>
+			
+	  <!-- /main -->
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

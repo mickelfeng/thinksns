@@ -1,0 +1,11 @@
+<ul>
+<volist name="friendFeed" id="vo">
+<li>
+<div class="feed feed-{$vo.action}">
+	<a href="#" class="type">{$vo.action}</a>
+	<div class="brief"><a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a> {$vo.title} <span>{$vo.cTime|friendlyDate}</span></div>
+	<neq name="vo.info" value=""><div class="detail">{$vo.info|h}</div></neq>
+</div>
+</li>
+</volist>
+</ul>

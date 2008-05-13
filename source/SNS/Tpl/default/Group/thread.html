@@ -1,0 +1,93 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="header">
+	<p class="image"><a href="__APP__/Group/show/id/{$group.id}"><img src="__PUBLIC__/Thumb/?w=50&h=50&url={$group.cover}" width="50" border="0" alt="{$group.name}" /></a></p>
+	<h2>{$group.name}<span class="pipe">-</span><em>讨论区</em></h2>
+
+	<p class="actions"><a href="__APP__/Group/show/id/{$group.id}">返回群组</a></p>
+		<div id="toc">
+		<p class="bar">{$postCount-1}个回复<span class="pipe">|</span><a href="__APP__/Group/show/id/{$group.id}">返回讨论区</a></p>
+	</div>
+	</div>
+<div id="wrap">
+	 
+	<div id="board-topic">
+
+		<h3><eq name="vo.top" value="1">[置顶]</eq> {$vo.title}</h3>
+		<ol>
+		 <volist name="list" id="p">
+				<li id="board-topic-floor1">
+				<div class="post" id="post107500">
+					<p class="image"><a href="__APP__/space/{$p.userId}"><img src="{$p.userId|getUserFace}" alt="{$p.userId|getUserName}" width="48" border="0" /></a></p>
+					<div class="info">
+						<span class="author"><a href="__APP__/space/{$p.userId}">{$p.userId|getUserName}</a> ({$p.userId|getUserProvince})</span>
+
+						<span class="time">{$p.cTime|friendlyDate=full}</span>
+						<span class="floor">{$key+1}楼</span><span class="actions"><a href="#" class="b-reply">回复</a></span>					</div>
+					<div class="content">
+<div class="orig-content">{$p.content|cleanJs}</div>					</div>
+				</div>
+
+			</li>
+			</volist>
+		</ol>
+		
+	<div class="pagination">{$page}</div>
+	<p class="return"><a href="__APP__/Group/show/id/{$vo.id}">&raquo; 返回讨论区</a></p>
+	<div id="board-topic-actions">
+		<ul class="actions">
+		<php>if(isGroupManager($mid,$vo->recordId)){</php>
+		<li><a href="__APP__/Group/top/id/{$vo.id}" id="toptopic-act">置顶主题</a></li>
+		<php>}</php>
+		<me id="vo.userId">
+		<li><a href="#" rel="__APP__/Group/deleteThread/id/{$vo.id}"" id="topic-act">删除主题</a></li>
+		</me>
+		</ul>
+	</div>
+	<div id="board-post">
+			<h4>回复<span id="reply-to">主题</span></h4>
+			<form action="__APP__/Group/doReply" method="post" enctype="application/x-www-form-urlencoded" name="reply">
+	
+				<p>
+					<label for="body" class="f-label">内容</label>
+					<textarea name="content" rows="6" cols="60" maxlength="8000"></textarea>
+				</p>
+				<p class="act">
+				 <input type="hidden" name="threadId" value="{$vo.id}" />
+					<input name="Submit2" type="submit" class="f-button" value="回复" />
+				</p>
+			</form>
+		</div>
+
+	</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

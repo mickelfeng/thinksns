@@ -1,0 +1,43 @@
+<div id="globalheader">
+	<h1><a href="__APP__/Home"><img src="../Public/images/logo.gif" alt="{&SITE_NAME}" /></a></h1>
+	<nosession name="mid">
+	<div id="globalutil"><a href="__APP__/Help/reg">功能简介</a></div>
+	</nosession>
+	<session name="mid">
+	<ul id="globalnav">
+		<li>
+			<a href="__APP__/Home">首页</a>
+		</li>
+		<li>
+			<a href="__APP__/Space">我的空间</a>
+			<a href="__APP__/Account/basic" class="edit">编辑</a>
+		</li>
+		<li class="withmenu" id="menu1">
+			<a href="__APP__/Friend">朋友</a><a href="#" class="drop">ˇ</a>
+			<ul class="menu">
+				<li><a href="__APP__/Friend">我的好友</a></li>
+				<li class="dummy"></li>
+				<li><a href="__APP__/Friend/search">搜索好友</a></li>
+				<li><a href="__APP__/Friend/invite">邀请好友</a></li>
+                <li class="dummy"></li>
+				<li><a href="__APP__/Friend/grabber">寻找好友</a></li>
+                <li><a href="__APP__/Friend/rand">随便看看</a></li>
+			</ul>
+		</li>
+		<li class="withmenu" id="menu2">
+			<a href="__APP__/Network/index/id/{$network.id}">社交网络</a><a href="#" class="drop">ˇ</a>
+			<ul class="menu">
+				<li><a href="__APP__/Network/index/id/{$network.id}">{$network.title}</a></li>
+				<li class="dummy"></li>
+				<li><a href="__APP__/Account/network">切换网络</a></li>
+			</ul>
+		</li>
+	</ul>
+	<div id="globalutil">
+		<a href="__APP__/Message/">短消息<neq name='msgCount' value="0">({$msgCount})</neq></a>
+		<a href="__APP__/Account/account">帐号</a>	  
+		<a href="__APP__/Account/privacy">隐私</a>
+		<a href="__APP__/Public/logout">退出</a>
+	</div>
+</session>
+</div>

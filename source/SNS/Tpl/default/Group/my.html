@@ -1,0 +1,71 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="header">
+	<p class="image"><a href="__APP__/space/{$mid}"><img src="{$mid|getUserFace}" alt="{$mid|getUserName}" width="48" /></a></p>
+	<h2>我的群组</h2>
+
+	<p class="actions"><a href="__APP__/space/{$mid}">我的空间</a></p>
+	<div id="toc">
+		<ul>
+			<li><a href="__APP__/Group">群组最新动态</a></li>
+			<li class="current"><a href="#">我的群组</a></li>
+			<li><a href="__APP__/Group/lists">群组列表</a></li>
+		</ul>
+
+		<p class="bar">你加入了{$count}个群组<span class="pipe">|</span><a href="__APP__/Group/create">创建新群组</a></p>		
+		<div class="shortcut">
+			<form action="__APP__/Group/lists" method="get" enctype="application/x-www-form-urlencoded" name="groupSearch" target="_self">
+				<p>
+					
+					<input name="name" type="text" class="f-text" id="name"  /> 
+					<input name="Submit" type="submit"  class="f-button" value="搜索群组" />
+				</p>
+
+			</form>
+		</div>
+	</div>
+</div>
+<div id="wrap">
+	<ul class="il" id="ilgroups">
+	<volist name="list" id="vo" empty="你还没有加入任何群组">
+	<li><div class="group"><p class="image"><a href="__APP__/Group/show/id/{$vo.id}"><img src="__PUBLIC__/Thumb/?w=96&h=96&url={$vo.cover}" alt="{$vo.name}" /></a></p><table class="info"><caption><a href="__APP__/Group/show/id/{$vo.id}">{$vo.name}</a>
+	</caption><tr><td><a href="#">{$vo.memberCount}名成员</a></td>
+	</tr><tr><td>{$vo.threadCount}个主题</td></tr></table><ul class="actions">
+	<php>if(isGroupManager($mid,$vo->id)){</php>
+	<li><a href="__APP__/Group/edit/id/{$vo.id}">设置群组</a></li>
+	<php>}</php>
+	<li><a href="__APP__/Group/post/groupId/{$vo.id}">发表主题</a></li>
+	</ul></div></li>
+	</volist>
+	</ul>
+<div class="pagination">{$page}</div>	</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

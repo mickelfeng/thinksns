@@ -1,0 +1,85 @@
+#facebox {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	text-align: left;
+}
+#facebox .popup {
+	background:url(http://cimg.bgquan.com/js/facebox/b.png);
+	width: 420px;
+}
+#facebox .loading {
+	text-align: center;
+}
+#facebox .body {
+	position: relative;
+	background:#fff;
+	border:1px solid #666;
+	margin:8px;
+}
+#facebox .header {
+	background: #509BE6;
+	padding: 0px 5px;
+	height:30px;
+	line-height:30px;
+}
+#facebox .title {
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+}
+#facebox .content {
+	background:#fff;
+	width:100%;
+	padding:0px;
+}
+#facebox .bottom {
+	border-top:1px solid #ccc;
+	background:#f4f4f4;
+	height:35px;
+	line-height:35px;
+	text-align:right;
+	padding-right:10px;
+}
+#facebox .close{
+	line-height:30px;
+	padding: 8px 5px;
+	float:right;
+}
+#facebox .close a {
+	display:block;
+	width:13px;
+	height:13px;
+	overflow:hidden;
+	background:url(http://cimg.bgquan.com/js/facebox/close.gif);
+	text-indent:-999em;
+}
+#facebox .close a:hover {
+	background-position:0 -12px;
+}
+#sayhello .content{
+	width:90%;
+	padding:5px;
+}
+#sayhello img{
+	margin:5px;
+}
+.fb-yes,.fb-no{
+    height:21px;
+    padding:1px 10px 1px 10px;
+    *padding:1px 5px;
+    border:1px solid;
+    border-color:#ddd #264f6e #264f6e #ddd;
+    background:#2782d6;
+    color:#fff;
+    text-align:center;
+    line-height:17px;
+    letter-spacing:1px;
+}
+.fb-no {
+    background:#eee;
+    border-color:#fff #999 #999 #fff;
+    color:#333;
+}

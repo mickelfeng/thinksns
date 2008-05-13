@@ -1,0 +1,49 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>网络设置 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<include file="../Public/top" />
+	<include file="../Public/left" />
+	<div id="container">
+		<div id="content">
+			<div id="toc">
+			<ul>
+			<li><a href="__APP__/Account/account">账号设置</a></li>
+			<li class="current"><a href="__APP__/Account/network">网络设置</a></li>
+			</ul>
+			</div>
+			<div class="sect-set">
+				<div class="sect">
+					<h3>设置网络</h3>
+					<div class="sect-brief">
+						<p class="tip">&nbsp;</p>
+					</div>
+					<div class="sect-content">
+					<form action="__APP__/Account/doChangeNetwork" method="post" enctype="application/x-www-form-urlencoded" name="changeNetwork" id="changeNetwork" class="nf" >
+							<p>
+								<label class="f-label">网络</label>
+								<select name="network" id="network">
+									<volist name="networks" id="vo"><option value="{$vo.id}" <?php if($vo->id == $user->networkId) echo "selected";?>>{$vo.title}</option>
+									</volist>
+								</select>
+							</p>
+							<p class="act">
+								<input name="changeName" type="submit" class="f-button" value="更换网络" />
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="../Public/footer" />
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../Public/js/PCAS.js"></script>
+<title>修改头像 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	
+	<include file="../Public/top" />
+	
+	<include file="../Public/left" />
+
+	<div id="container">
+		<div id="content">
+			<div id="toc"><ul><li><a href="__APP__/Account/basic">基本信息</a></li>
+			<li><a href="__APP__/Account/contact">联系信息</a></li>
+			<li><a href="__APP__/Account/interest">兴趣爱好</a></li>
+			<li><a href="__APP__/Account/education">教育信息</a></li>
+			<li><a href="__APP__/Account/work">工作信息</a></li>
+			<li class="current"><a href="__APP__/Account/face">上传头像</a></li>
+			</ul></div>
+
+			<form id="step3" name="step3" method="post" action="__APP__/Account/doChangeFace" enctype="multipart/form-data">
+			<div id="picture-container">
+
+				<div id="pictureCurrent">
+					<h3>当前头像</h3>
+							<!-- <p>你可以从你的<a href="#">头像相册</a>里选择照片。</p> -->
+							<div><img src="{$mid|getUserFace='b'}" alt="当前头像" /></div>
+				</div>
+				<div id="pictureUpload">
+					<eq name='up' value='ok'>
+					<h1>上传成功！请刷新浏览过的页面，这样才能看到新头像！</h1>
+					<else />
+					<h3>上传头像</h3>
+						<p>支持 JPG、GIF 和 PNG 格式的照片，每张最大 2M。</p>
+						<p>建议使用大头照，不然缩小后可能看不清楚。</p>
+						<br />
+						<p>
+						<INPUT TYPE="hidden" name="uploadFileType" value="bmp,jpg,gif,png,jpeg">
+							<input name="files[]" id="face" type="file" class="f-file" />
+						</p>
+						<br />
+						<p class="act">
+							<input name="Submit" type="submit" class="f-button" value="上传头像"  id="Submit" />
+						</p>
+						<br />
+						<p class="unsharp"><strong>请确认上传的是你自己的照片。</strong><br />上传色情、反动等照片将导致你的账号被删除。</p>
+					</eq>
+				</div>
+			</div>
+		</form>
+
+	</div>
+		
+	</div>
+	<include file="../Public/footer" />
+
+</div>
+</body>
+</html>

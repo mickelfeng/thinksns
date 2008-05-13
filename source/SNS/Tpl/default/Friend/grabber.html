@@ -1,0 +1,146 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+        <div id="content">
+		<div id="toc">
+			<ul>
+			<li><a href="__APP__/Friend/index">我的好友</a></li>
+			<li><a href="__APP__/Friend/invite">邀请好友</a></li>
+			<li><a href="__APP__/Friend/search">搜索好友</a></li>
+            <li class="current"><a href="__APP__/Friend/grabber">寻找好友</a></li>
+			</ul>
+		</div>
+		
+		<div id="friendfinder-msn" class="friendfinder">
+			<div id="content2">
+			<form method="post" action="__APP__/Friend/getFromMsn" class="nf">
+			  <div class="sect-set">
+				<div id="ff-lm" class="sect">
+				  <h3>寻找 MSN 好友</h3>
+				  <div class="sect-content">
+					<div id="friendfinder-msn2" class="friendfinder">
+					  <h4>输入你的 MSN 账号和密码，寻找你的 MSN 好友，没准他们也在ThinkSNS</h4>
+					  <p>
+						<label class="f-label" for="login-msn">你的 MSN 账号</label>
+						<input name="msn-name" type="text" class="f-text" id="login-msn" value="{$user.email}" />
+						<span class="warning" id="msntip" style="margin-left:120px; display:none;"></span></p>
+					  <p>
+						<label class="f-label" for="password-msn">MSN 密码</label>
+						<input name="msn-password" type="password" class="f-text" id="password-msn" />
+					  </p>
+					  <p class="act">
+						<input type="hidden" name="type" value="msn" />
+						<input type="submit" class="f-button findfriend" value="寻找好友" />
+					  </p>
+					  <p class="note"> 放心，我们不会保存你的 MSN 密码。 </p>
+					</div>
+				  </div>
+				</div>
+
+				<!--div id="ff-gt" class="sect">
+				  <h3>寻找 GTalk 好友</h3>
+				  <div class="sect-content">
+					<div id="friendfinder-gtalk" class="friendfinder">
+					  <h4>输入你的 GTalk 账号和密码，寻找你的 GTalk 好友，没准他们也在海内</h4>
+					  <p>
+						<label class="f-label" for="login-gtalk">你的 GTalk 账号</label>
+						<input name="login" type="text" class="f-text" id="login-gtalk" value="qiniao.com" />
+						<select name="domain" id="domain-gtalk">
+						  <option value="">选择...</option>
+						  <option value="gmail.com" selected="selected">@gmail.com</option>
+						</select>
+					  </p>
+					  <p>
+						<label class="f-label" for="password-gtalk">GTalk 密码</label>
+						<input name="password" type="password" class="f-text" id="password-gtalk" />
+					  </p>
+					  <p class="act">
+						<input type="hidden" name="type" value="gtalk" />
+						<input type="submit" class="f-button findfriend" value="寻找好友" />
+					  </p>
+					  <p class="note"> 放心，我们不会保存你的 GTalk 密码。 </p>
+					</div>
+				  </div>
+				</div-->
+				<!--div id="ff-em" class="sect">
+				  <h3>寻找 Email 联系人</h3>
+				  <div class="sect-content">
+					<div id="friendfinder-email" class="friendfinder">
+					  <h4>输入你的 Email 账号和密码，寻找你的 Email 联系人，没准他们也在海内</h4>
+					  <p>
+						<label class="f-label" for="login-email">你的 Email 账号</label>
+						<input name="login" type="text" class="f-text" id="login-email" value="" />
+						<select name="domain" id="domain-email">
+						  <option value="">选择...</option>
+						  <option value="163.com">@163.com</option>
+						  <option value="hotmail.com">@hotmail.com</option>
+						  <option value="live.com">@live.com</option>
+						  <option value="live.cn">@live.cn</option>
+						  <option value="gmail.com">@gmail.com</option>
+						  <option value="msn.com">@msn.com</option>
+						  <option value="yahoo.com">@yahoo.com</option>
+						  <option value="yahoo.com.cn">@yahoo.com.cn</option>
+						  <option value="sina.com">@sina.com</option>
+						</select>
+					  </p>
+					  <p>
+						<label class="f-label" for="password-email">Email 密码</label>
+						<input name="password" type="password" class="f-text" id="password-email" />
+					  </p>
+					  <p class="act">
+						<input type="hidden" name="type" value="email" />
+						<input type="submit" class="f-button findfriend" value="寻找好友" />
+					  </p>
+					  <p class="note"> 放心，我们不会保存你的 Email 密码。 </p>
+					</div>
+				  </div>
+				</div-->
+				<!--div id="ff-im" class="sect">
+				  <h3>寻找 Outlook 等联系人</h3>
+				  <div class="sect-content">
+					<div id="friendfinder-csv" class="friendfinder">
+					  <h4>上传 Outlook、Foxmail、ThunderBird 等 Email 客户端的通讯录 (CSV 格式)，寻找你的联系人</h4>
+					  <p>
+						<label class="f-label" for="csvfile">CSV 文件</label>
+						<input type="file" name="csvfile" class="f-file" id="csvfile" />
+					  </p>
+					  <p class="act">
+						<input type="submit" class="f-button" value="寻找好友" />
+					  </p>
+					</div>
+				  </div>
+				</div-->
+			  </div>
+			</form>
+			</div>
+			
+        </div>
+
+        </div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

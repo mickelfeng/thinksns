@@ -1,0 +1,62 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Public/Js/smartEditor/smartEditor.js"></script>
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        <div id="blog-edit-title">
+            <h2>在 {$groupId|getGroupName} 发表新帖</h2>
+        </div>
+        <div id="wrap">
+            <div id="blog-edit">
+                 <form action="__APP__/Group/doPost" method="post" enctype="multipart/form-data" name="thread" class="antidis">
+            	
+                    <h4>标题：</h4>
+                    	<div class="sect">
+                         <input name="title" type="text" class="f-text" maxlength="40" id="title" />
+                        <input name="recordId" type="hidden" value="{$groupId}" />
+                    </div>
+                    <div class="sect">
+                        <html:editor type="FCKeditor" id="editor" name="content" />
+                    </div>
+<!--	                <div id="blog-pics" class="sect">
+                        <h4>上传照片：</h4>
+                        <input type="file" class="f-file" name="images" />
+                        <input type="hidden" name="blogid" />
+                    </div> -->
+                    
+                    
+                    <p class="act">
+                        <input name="Submit" type="submit" class="f-button" value="发表新帖" />
+                    </p>
+                </form>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<div id="shareobj" class="dialog-2">
+	<div class="bd">
+		<div id="share">
+			<form action="__APP__/Share/insert" method="post" id="stp-form">
+				<table class="form-layout">
+				<tbody>
+				<tr><th>描述：</th>
+					<td><textarea name="info" id="stp-tarea" maxlength="200"></textarea></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td class="act">
+					<input type="hidden" type="text" name="title" value="{$title}">
+					<input type="hidden" type="text" name="module" value="{$module}">
+					<input type="hidden" type="text" name="recordId" value="{$recordId}">
+					<input class="fb-yes" value="确定" type="submit">
+					<input class="fb-no" onclick="$.facebox.close()" value="取消" type="button">
+					</td>
+				</tr>
+				</tbody></table>
+			</form>
+		</div>
+		<div class="share-content">{$content}</div>
+	</div>
+</div>

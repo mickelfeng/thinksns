@@ -1,0 +1,66 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        <div id="blog-edit-title">
+            <h2>写新日志</h2>
+        </div>
+        <div id="wrap">
+            <div id="blog-edit">
+            	<form action="__APP__/Blog/insert" method="post" enctype="multipart/form-data" name="blog" class="antidis">
+                    <h4>标题：</h4>
+                    	<div class="sect">
+                        <input type="text" class="f-text" name="title" maxlength="40" value=""/>
+                    </div>
+                    <div class="sect">
+                        <html:editor type="FCKeditor" id="editor" name="content" />
+                    </div>
+<!--	                <div id="blog-pics" class="sect">
+                        <h4>上传照片：</h4>
+                        <input type="file" class="f-file" name="images" />
+                        <input type="hidden" name="blogid" />
+                    </div> -->
+                    <div class="sect">
+                        <h4>日志标签：</h4>
+                        <input type="text" class="f-text" name="tags" maxlength="40" value=""/>
+                    </div>
+                    <div id="blog-private" class="sect">
+						<h4>隐私设置：</h4>
+                        <select name="private">
+                        	<option value="0" selected="selected">全站用户可见</option>
+                          	<option value="1">相同网络用户及好友可见</option>
+                          	<option value="2">仅好友可见</option>
+                          	<option value="3">仅自己可见</option>
+                        </select>
+                    </div>
+                    <p class="act">
+                        <input type="submit" class="f-button" name="post" value="发表日志" />
+                        <input type="button" class="f-button f-alt" name="draft" value="保存为草稿" /> 
+                    </p>
+                </form>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+	    <div id="content">
+          <div id="toc">
+            <ul>
+              <li><a href="__APP__/Friend/index">我的好友</a></li>
+              <li><a href="__APP__/Friend/invite">邀请好友</a></li>
+              <li><a href="__APP__/Friend/search">搜索好友</a></li>
+              <li class="current"><a href="__APP__/Friend/grabber">寻找好友</a></li>
+            </ul>
+          </div>
+	      <div class="block">
+            <form method="post" action="/Friend/inviteUser" class="antidis">
+              <h3>你的MSN好友中有 {$inCount} 个在ThinkSNS，赶快加他们为好友吧！</h3>
+              <div id="finder_invite" class="contacts-box">
+                <div class="hd">
+                  <label class="f-check" for="selectall">
+                    <input type="checkbox" id="selectall" name="alluser" value="1" checked="checked" disabled="disabled" />
+                    选择所有人</label>
+                </div>
+                <div class="bd">
+                  <table>
+                  	<volist name="in" id="in">
+                    <tr class="current">
+                      <td class="checkbox"><input type="checkbox" name="invites[]" value="{$in[1]}" checked="checked" /></td>
+                      <td class="contact">{$in[0]}</td>
+                      <td class="email">{$in[1]}</td>
+                    </tr>
+                    </volist>
+                  </table>
+                </div>
+              </div>
+              <p class="act lb">
+                <input type="submit" class="f-button" name="submit" value="加好友" disabled="disabled" />
+              </p>
+            </form>
+          </div>
+  	      <div class="block">
+            <form method="post" action="/Friend/inviteEmail" class="antidis">
+              <h3>还有 {$outCount} 个人不在ThinkSNS上，你可以邀请他们：</h3>
+              <div id="finder_invite" class="contacts-box">
+                <div class="hd">
+                  <label class="f-check" for="selectall">
+                    <input type="checkbox" id="selectall" name="alluser" value="1" checked="checked" disabled="disabled" />
+                    选择所有人</label>
+                </div>
+                <div class="bd">
+                  <table>
+                  	<volist name="out" id="out">
+                    <tr class="current">
+                      <td class="checkbox"><input type="checkbox" name="invites[]" value="{$out[1]}" checked="checked" /></td>
+                      <td class="contact">{$out[0]}</td>
+                      <td class="email">{$out[1]}</td>
+                    </tr>
+                    </volist>
+                  </table>
+                </div>
+              </div>
+              <p class="act lb">
+                <input type="submit" class="f-button" name="submit" value="邀请" />
+              </p>
+            </form>
+          </div>
+      </div>
+      <!-- /content -->
+  </div>
+
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

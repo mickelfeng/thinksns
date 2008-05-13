@@ -1,0 +1,73 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        	<div id="header">
+                <p class="image"><a href="__APP__/space/{$uid}"><img src="{$uid|getUserFace}" width="48" /></a></p>
+                <h2><me id="uid">我<else />{$uid|getUserName}</me>的相册</h2>
+                <p class="actions"><a href="__APP__/space/{$uid}"><me id="uid">我<else />{$uid|getUserName}</me>的空间</a></p>	
+             	<div id="toc">
+                    <ul>
+					<me id="uid">
+						<li><a href="__APP__/Photo/friends">朋友的相册</a></li>
+						<li class="current"><a href="__APP__/photos/{$mid}">我的相册</a></li>
+					<else />
+						<li class="current"><a href="__APP__/photos/{$uid}">{$uid|getUserName}的相册</a></li>
+						<li><a href="__APP__/Photo/friends">朋友的相册</a></li>
+						<li><a href="__APP__/photos/{$mid}">我的相册</a></li>
+					</me>                    	
+                    </ul>
+                    <p class="bar">{$albumCount} 个相册 | <a href="__APP__/Photo/create">创建新相册</a></p>
+                    <div class="shortcut"><a href="__APP__/Photo/upload" class="shortcut-link">上传新照片</a></div>
+                </div>
+            </div>
+			<div id="wrap">
+            	<div>
+                	<ul class="il">
+                	<volist name="list" id="vo">		
+                    <li>
+                        <div class="photo-album">
+                            <p class="image"><a href="__APP__/album/{$vo.id}"><img src="__PUBLIC__/Thumb/?w=180&h=100&url={$vo.id|getAlbumCover}" /></a></p>
+                            <table class="info">
+                                <caption><a href="__APP__/album/{$vo.id}">{$vo.title}</a></caption>
+                                <tr>
+                                    <td class="count">{$vo.photoCount} 张照片</td>
+                                </tr>
+                                <tr>
+                                	<td class="time">更新于 {$vo.mTime|friendlyDate}<br />创建于 {$vo.cTime|friendlyDate}</td>
+                            	</tr>
+                            
+                            </table>
+                        </div>
+                    </li>
+                    </volist>
+                    </ul>
+                </div>            
+            </div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>	  

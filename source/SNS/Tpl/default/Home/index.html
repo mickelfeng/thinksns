@@ -1,0 +1,94 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<title>{&SITE_TITLE}</title>
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+	<div id="content">
+	<div class="ui-t1">
+	<div class="ui-gf">
+		<div class="sect" id="newsfeed">
+            <div style=" border:solid 1px #EEDD69;background:#FFF8CC; padding:5px; line-height:23px; margin-bottom:10px;">
+            <span><h2>欢迎您，{$mid|getUserName}！</h2></span>
+            <volist name="notify" id="vo">
+			 <div id="0{$vo.id}">
+					<a href="__APP__/Space/index/id/{$vo.fromUserId}"><b>{$vo.fromUserId|getUserName}</b></a> {$vo.id|getUserNotify} <a class="delAlert" id="{$vo.id}" href="javascript:void(0);">忽略</a><br />
+			  </div>
+			</volist>
+            </div>
+            <div id="new-member" class="sect">
+				<span style="float:right"><a href="__APP__/Friend/rand">随便看看</a></span>
+				<h3>最近注册的新朋友</h3>
+				<div class="sect-content">
+				<ol class="al">
+				<volist name="members" id="vo">
+				<li><a href="__APP__/space/{$vo.id}"><img src="{$vo.id|getUserFace}" alt="{$vo.name}" width='48' border="0" /><span>{$vo.name}</span></a></li>
+				</volist>
+				</ol>
+				</div>
+			</div>
+        <div class="sect" id="newsfeed">
+			<h3>今日动态</h3>
+			<div class="sect-content" id="feed">
+				
+			</div>
+		</div>
+
+        </div>
+		</div>
+
+				<div class="ui-g">
+				<admin name="quan" id="user.id">
+				<div class="sect" id="quan-ad">
+					<h3>管理菜单</h3>
+					<div class="sect-content">
+						<ul>
+						<li><a href="__APP__/Manage">用户管理</a></li>
+						<li><a href="#">帖子管理(未开通)</a></li>
+						</ul>
+					</div>
+				</div>
+				</admin>
+				<div class="sect" id="level">
+				<h3>我的状态</h3>
+				<div class="sect-content">
+                   <img src="{$mid|getUserFace}" width="48" border="0" /></a>
+                   <p><a href="__APP__/Account/face">更换头像</a></p></td>
+				</div>
+				</div>
+				<div class="sect" id="hainei-feed">
+					<h3>Think动态</h3>
+					<div class="sect-content">
+						<ul>
+						<li>5月1日ThinkSNS预览版测试期间将邀请部分用户提前使用！</li>
+						</ul>
+
+					</div>
+				</div>
+				<div class="sect" id="findfriends">
+					<h3>寻找好友</h3>
+					<div class="sect-content">
+						已经有朋友在使用ThinkSNS？立即<a href="/Friend/grabber">寻找MSN好友</a>！</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

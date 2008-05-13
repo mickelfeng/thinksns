@@ -1,0 +1,131 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<style type="text/css">
+#pmsg table
+{
+	table-layout:fixed;
+	width:100%;
+	margin:2px 0;
+}
+.pmsg-comp
+{
+	float:left;
+	width:438px;
+	padding:20px 0 10px 15px;
+	overflow:hidden;
+}
+.pmsg-comp th
+{
+	width:60px;
+	text-align:right;
+}
+.pmsg-comp th,.pmsg-comp td
+{
+	vertical-align:top;
+	padding:8px;
+}
+.pmsg-comp .t-text {
+	width:100px;
+}
+.pmsg-comp .f-text,.pmsg-comp textarea
+{
+	width:300px;
+}
+.pmsg-comp textarea
+{
+	height:12em;
+}
+.pmsg-comp-act div
+{
+	width:306px;
+	padding:10px 0;
+}
+#pmsg .ui-g
+{
+	float:right;
+	width:157px;
+	padding:10px;
+}
+</style>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+
+<div id="toc">
+	<ul><li><a href="__APP__/Message/index">收件箱</a></li>
+	<li><a href="__APP__/Message/sendbox">发件箱</a></li>
+	<li><a href="#">通知</a></li>
+	<li class="alt current"><a href="__APP__/Message/send">写私信</a></li>
+	</ul></div>
+<div id="pmsg">
+	<div class="pmsg-comp">
+	<form action="__APP__/Message/insert" method="post" name="send">
+			<table>
+				<tbody>
+					<tr>
+						<th>收件人：</th>
+						<td>				<input name="user" type="text" class="f-text" style="width:100px;" size="30" value="{$toUserId|getUserName}" />			
+
+												</td>
+					</tr>
+					<tr>
+						<th>主题：</th>
+						<td><input type="text" name="title" class="f-text" maxlength="30"/>
+						</td>
+					</tr>
+					<tr>
+
+						<th>内容：</th>
+						<td><textarea name="content" id="pmsg-textarea" rows="10" cols="60"></textarea></td>
+					</tr>
+					<tr class="pmsg-comp-act">
+						<th><input type="hidden" name="toUserId" value="{$toUserId}" />
+                            <input type="hidden" name="fromUserId" value="{$fromUserId}" /></th>
+						<td><div>
+								<input name="submit" type="submit" class="f-button" value="发送" />
+								<input name="reset" type="reset" class="f-button f-alt" value="取消" />
+
+															</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	
+	<div class="ui-g">
+		<div id="miniblog-explain" style="height:300px; line-height:20px; overflow:scroll;">
+			<h4>好友列表</h4>
+			<volist name="friends" id="vo">
+			<p><a href="#" onClick="send.user.value='{$vo.friendId|getUserName}';send.toUserId.value='{$vo.friendId}';">{$vo.friendId|getUserName}</a></p>
+			</volist>
+		</div>
+		<div class="bounds">
+		<h4>赞助商</h4><p>赞助商链接</p>		
+		</div>
+
+	</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

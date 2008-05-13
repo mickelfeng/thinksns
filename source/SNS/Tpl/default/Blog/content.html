@@ -1,0 +1,133 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="header">
+                <p class="image"><a href="__APP__/space/{$vo.userId}"><img src="{$vo.userId|getUserFace}" width="48" /></a></p>
+                <h2><me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的日志 - {$vo.title}</h2>
+                <p class="actions"><a href="__APP__/space/{$vo.userId}"><me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的空间</a></p>
+                <div id="toc">
+                    <p class="bar">{$count} 篇日志<span class="pipe">|</span>
+                    <a href="__APP__/Blog/index/id/{$vo.userId}">返回<me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的日志列表</a>
+                    </p>
+                </div>
+            </div>
+            <div class="ui-t2">
+                <div class="ui-gf">
+                    <div class="blog-entry na">
+                        <div class="info">
+                            <h4>{$vo.title}</h4>
+                            <span class="time">{$vo.cTime|friendlyDate}</span>
+							<me id="vo.userId">
+							<span class="pipe">|</span>
+							<a href="__APP__/Blog/edit/id/{$vo.id}">编辑日志</a>
+							<span class="pipe">|</span>
+							<a href="__APP__/Blog/delete/id/{$vo.id}" rel="__APP__/Blog/delete/id/{$vo.id}" id='deleteId'>删除日志</a>
+							</me>
+						</div>
+                       <!-- Fantasy修改-->
+                        <div class="content">{$vo.content|cleanJs}</div>
+                        <p class="stat">
+                        {$vo.readCount} 次阅读 |
+						<span id="plnum">{$vo.id|getCommentCount="Blog"}</span> 个评论
+                        <a href="javascript:void(0);" class="share" rel="__APP__/Share/blog/id/{$vo.id}" onclick="$.facebox.click(this);">分享</a>
+                        </p>
+                    </div>
+                    <div class="blog-cmts" id="blogcmtlist">
+                        <ol id="threadlist">
+                        <volist id="re" name="comments">
+                        <!-- <li id="comment36842"> -->
+			<li id="0{$re.id}">
+                        <div class="post parent-post">
+                            <p class="image">
+                            <a href="__APP__/space/{$re.userId}">
+                            <img src="{$re.userId|getUserFace}" width="48" alt="{$re.userId|getUserName}" />
+                            </a>
+                            </p>
+                            <div class="info">
+                                <span class="author"> <a href="__APP__/space/{$re.userId}">{$re.userId|getUserName}</a> ({$re.userId|getUserProvince})</span>
+
+                                <span class="time">{$re.cTime|friendlyDate}</span>
+                                <!-- <span class="actions"><a href="#" rel="#" class="thread-reply">回复</a></span> -->
+								<me id="re.userId"><span class="delete">
+								<a class="Qconfirm" id="{$re.id}" rel="/index.php/Comment/delete" href="javascript:void(0)"  title="确定要删除?">删除</a>
+								</span></me>
+							</div>
+							<div class="content">{$re.content|ubb|h}</div>
+                        </div>
+                        </li>
+                        </volist>
+                        </ol>
+                        <div id="blog-comment" class="comment-post">
+                            <h4>发表评论<span id="load" style="display: none;color:red">Loading...</span></h4><a title="TOP" id="a_top" onClick="window.scrollTo(0,0);" href="javascript:;">TOP</a>
+                            <form action="__APP__/Comment/insert" method="post">
+                            <p>
+				<img onClick="insert(1)" src="http://cimg.bgquan.com/images/biaoqing/1.gif"/>
+				<!-- <img onclick="insert(2);" src="http://cimg.bgquan.com/images/biaoqing/2.gif"/> -->
+				<img onClick="insert(3)" src="http://cimg.bgquan.com/images/biaoqing/3.gif"/>
+				<img onClick="insert(4)" src="http://cimg.bgquan.com/images/biaoqing/4.gif"/>
+				<img onClick="insert(5)" src="http://cimg.bgquan.com/images/biaoqing/5.gif"/>
+				<img onClick="insert(6)" src="http://cimg.bgquan.com/images/biaoqing/6.gif"/>
+				<img onClick="insert(7)" src="http://cimg.bgquan.com/images/biaoqing/7.gif"/>
+				<img onClick="insert(8)" src="http://cimg.bgquan.com/images/biaoqing/8.gif"/>
+				<img onClick="insert(9)" src="http://cimg.bgquan.com/images/biaoqing/9.gif"/>
+				<img onClick="insert(10)" src="http://cimg.bgquan.com/images/biaoqing/10.gif"/>
+				<img onClick="insert(11)" src="http://cimg.bgquan.com/images/biaoqing/11.gif"/>
+				<img onClick="insert(12)" src="http://cimg.bgquan.com/images/biaoqing/12.gif"/>
+				<img onClick="insert(13)" src="http://cimg.bgquan.com/images/biaoqing/13.gif"/>
+				<img onClick="insert(14)" src="http://cimg.bgquan.com/images/biaoqing/14.gif"/>
+				<img onClick="insert(15)" src="http://cimg.bgquan.com/images/biaoqing/15.gif"/>
+				<img onClick="insert(16)" src="http://cimg.bgquan.com/images/biaoqing/16.gif"/>
+				<img onClick="insert(17)" src="http://cimg.bgquan.com/images/biaoqing/17.gif"/>
+				<!-- <img onclick="insert(18)" src="http://cimg.bgquan.com/images/biaoqing/18.gif"/> -->
+				<img onClick="insert(19)" src="http://cimg.bgquan.com/images/biaoqing/19.gif"/>
+				<br />
+                                <textarea name="content" id="p-cmt-body" rows="6" cols="60" maxlength="1000"></textarea>
+                            </p>
+                            <p class="act">
+                           <!--  <input type="submit" class="f-button" value="评 论"/> -->
+
+			    <input type="button" id="ajaxcom" class="f-button" value="评 论"/>
+			    <span id="flag"></span>
+
+                            <input type="hidden" name="userId"   id="userId" value="{$mid}">
+                            <input type="hidden" name="recordId" id="recordId" value="{$vo.id}">
+                            <input type="hidden" name="module"   id="module" value="Blog">
+			    <input type="hidden" id="userImg" value="{$userId|getUserFace}">
+			    <input type="hidden" id="userName" value="{$userId|getUserName}">
+			    <input type="hidden" id="userProv" value="{$userId|getUserProvince}">
+                            </p>
+                            </form>
+                        </div>
+                    </div>
+		    <!-- /Fantasy修改-->
+                </div>
+                <div class="ui-g">
+                </div>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

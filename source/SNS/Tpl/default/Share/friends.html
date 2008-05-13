@@ -1,0 +1,86 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.comment_0{
+	margin-left:0px; width:100%;
+}
+.comment_1{
+	margin-left:50px; width:100%;
+}
+</style>
+<title>好友的分享 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="header">
+                <p class="image"><a href="__APP__/space/{$uid}"><img src="{$uid|getUserFace}" width="48" /></a></p>
+                <h2>好友分享</h2>
+                <p class="actions"><a href="__APP__/space/{$uid}">我的空间</a></p>
+             	<div id="toc">
+                    <ul>
+						<li class="current"><a href="__APP__/Share/friends">好友分享</a></li>
+						<li><a href="__APP__/share/{$mid}">我的分享</a></li>
+					</ul>
+                    <p class="bar"><span id="xqnum">{$count}</span> 个分享</p>
+                </div>
+            </div>
+	<div class="ui-t2">
+	<div class="ui-gf">
+	<ul class="cmtlist" id="share-list">
+	<volist name="list" id="vo">
+	<li id="share-{$vo.id}">
+	<a href="__APP__/space/{$vo.userId}" class="avatar"><img src="{$vo.userId|getUserFace}" alt="{$vo.userId|getUserName}" /></a>
+	<div class="cmt-content">
+		<div class="hd">
+			<a href="__APP__/space/{$vo.userId}">{$vo.userId|getUserName}</a> {$vo.title}<span class="dt">{$vo.cTime|friendlyDate}</span>
+			<!-- <div class="cmt-action"><a href="javascript:void(0)" rel="__APP__/Share/" class="share">分享</a></div> -->
+		</div>
+		<div class="bd">
+			<div class="share-content"><p>{$vo.content}</p></div>
+			<neq name="vo.info" value="">
+			<div class="share-comment"><p>{$vo.info}</p></div>
+			</neq> 
+		</div>
+	</div>
+	</li>
+	</volist>
+	</ul>
+	<div class="pagination">{$page}</div>
+	</div>
+	<div class="ui-g">
+		<div class="share-a-link">
+			<form action="__APP__/Share/insertUrl" method="POST" name="sharelink" id="sharelink">
+				<h3>分享网页</h3>
+				<p>
+					<input type="text" class="f-text" name="url" id="share-a-link-input" value="" tabindex="1" />
+				</p>
+				<p class="help"><a href="/help?a=howtoshare">如何分享？</a></p>
+				<p class="act"><input type="submit" class="f-button" value="分享" tabindex="2" /></p>
+			</form>
+		</div>
+	</div>
+</div>
+
+	</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

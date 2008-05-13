@@ -1,0 +1,81 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<!--
+<script language="JavaScript">
+
+$(document).ready(function() {
+	$("#del-album").click(function(){alert('删除');});
+});
+</script>
+//-->
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="header">
+                <p class="image">
+                <a href="__APP__/space/{$album.userId}"><img src="{$album.userId|getUserFace}" width="48" /></a>
+                </p>
+                <h2><me id="album.userId">我<else />{$album.userId|getUserName}</me>的相册<span class="pipe">-</span><em>{$album.title}</em></h2>
+                <p class="actions"><a href="__APP__/space/{$album.userId}"><me id="album.userId">我</me><notme id="album.userId">{$album.userId|getUserName}</notme>的空间</a></p>
+                <div id="toc">
+                <p class="bar">{$album.photoCount} 张照片<span class="pipe">|</span>
+                <me id="album.userId">
+                <a href="__APP__/Photo/uploads/albumId/{$album.id}">上传更多照片</a>
+                <span class="pipe">|</span>
+                <a href="__APP__/photos/{$album.userId}">我的所有相册</a>
+                <span class="pipe">|</span>
+                <a href="__APP__/Photo/editAlbum/albumId/{$album.id}">编辑相册</a>
+				<span class="pipe">|</span>
+                <a href="__APP__/Photo/delAlbum/albumId/{$album.id}" rel="__APP__/Photo/delAlbum/albumId/{$album.id}" id="deleteId">删除相册</a>
+                <else />
+                <a href="__APP__/photos/{$album.userId}">{$album.userId|getUserName}的所有相册</a>
+				</me>
+                </p>
+                </div>
+            </div>
+            <div id="wrap">
+            	<div>
+            	<ul class="photo-list">
+                	<volist name="list" id="vo" empty="还没有照片">
+                    <li><a class="photo" href="__APP__/Photo/image/id/{$vo.id}"><img src="__PUBLIC__/Thumb/?w=136&h=136&t=f&url={$vo.imagePath}" /></a></li>
+                    </volist>
+                </ul>
+              	</div>
+                <div class="clear">&nbsp;</div>
+                <div class="pagination">{$page}</div>
+                <div class="more-act">
+                    <div class="ma-b1">
+                    	<div class="album-desc">{$album.info}</div>
+                    </div>
+                    <div class="ma-b2">
+                        <!--a href="#" class="share">分享</a-->
+                    </div>
+                </div>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

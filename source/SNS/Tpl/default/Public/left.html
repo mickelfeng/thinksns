@@ -1,0 +1,64 @@
+<nosession name="mid">
+
+	<div id="globalsidebar">
+		<form name="indexLoginForm" method="post" id="indexLoginForm" action="__APP__/Public/checklogin" />
+			<p>
+				<label class="f-label" for="email_login">Email：</label>
+
+				<input type="text" name="email" id="loginEmail" class="f-text" value="{$_COOKIE[email]}" onclick="if(this.value=='请输入Email地址'){this.value='';}" onblur="if(this.value==''){this.value='请输入Email地址';}" />
+			</p>
+			<p>
+				<label class="f-label" for="password_login">密码：</label>
+				<input type="password" name="password" id="password_login" class="f-text" maxlength="32" />
+			</p>
+			<p>
+				<label class="f_check" for="autologin">
+				<input type="checkbox" name="autologin" id="autologin" class="input_check" value="on" />
+				下次自动登录
+				</label>
+			</p>
+			<p class="act">
+				<input type="submit" class="f-button" value="登录" />
+			</p>
+			<p id="forgot"><a href="__APP__/Public/findpassword">忘记密码了？</a>
+			</p>
+		</form>
+		<ul id="globalintro">
+		  <li><a href="__APP__/Help/reg"><strong>功能简介</strong>看看{&SITE_NAME}怎么玩</a></li>
+	    </ul>
+	</div>
+
+</nosession>
+
+<session name="mid">
+
+	<div id="globalsidebar">
+		<form action="__APP__/Friend/search" method="POST" enctype="application/x-www-form-urlencoded"  id="globalsearch">
+			<h4>搜索用户</h4>
+			<fieldset>
+				<input type="text" class="f-text unsharp" name="keyword" id="globalsearch-query" title="输入姓名查找" />
+				<input type="submit" class="f-button" id="globalsearch-go" value="" title="搜索" />
+			</fieldset>
+		</form>
+		<ul id="apps">
+			<li><a href="__APP__/Mini/friends" id="app-miniblog">心情</a>
+				<a href="#" class="add" title="#"></a></li>
+			<li><a href="__APP__/Photo/friends" id="app-photo">相册</a>
+				<a href="__APP__/Photo/upload" class="add" title="上传新照片">上传</a></li>
+			<li><a href="__APP__/Blog/friends" id="app-blog">日志</a>
+				<a href="__APP__/Blog/write" class="add" title="发表新日志">发表</a></li>
+			<li><a href="__APP__/Share/friends" id="app-share">分享</a>
+			<a href="#" class="add" title="#"></a></li>
+			<li><a href="__APP__/Group" id="app-group">群组</a>
+			<a href="#" class="add" title="#"></a></li>
+			<li><a href="__APP__/Board" id="app-notepad">意见</a>
+			<a href="#" class="add" title="#"></a></li>
+			<li class="clear"></li>
+		</ul>
+		<form action="__APP__/Public/userInvite" method="post" id="invite-form" name="userInvite">
+			<p id="invite-msg" style="display:none" class=""></p>
+			<p><input type="text" class="f-text" name="userInviteEmail" title="输入好友email,邀请好友加入ThinkSNS" value="输入好友email" onclick="this.value='';" /></p>
+			<p class="act"><input type="submit" class="f-button" value="邀请" /> <a href="__APP__/Friend/invite" id="invite-preview">预览</a></p>
+		</form>
+	</div>
+</session>

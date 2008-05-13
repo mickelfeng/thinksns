@@ -1,0 +1,59 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="title">
+	<h2>创建群组<span class="pipe">-</span><em>{$_GET[id]|getGroupName}</em></h2>
+</div>
+<div class="msg-succ">创建成功</div><div id="header">
+	<div id="toc"><ul><li><a href="#">第一步：群组信息</a></li>
+	<li class="current"><a href="#">第二步：群组头像</a></li>
+	<li class="dummy">第三步：群组成员</li></ul></div></div>
+<div id="picture-container">
+	<div id="pictureCurrent">
+		<h3>当前头像</h3>
+		<img src="/Public/images/noface.gif"  width="129" height="170" alt="群组头像" />
+	</div>
+	<div id="pictureUpload">
+		<h3>上传头像</h3>
+		<p>支持 JPG、GIF 和 PNG 格式的照片，每张最大 4M。</p>
+		<form id="step2" name="step2" method="post" action="__APP__/Group/doChangeFace" enctype="multipart/form-data">
+			<p>
+			<input type="hidden" name="uploadFileType" value="jpg,gif,png,jpeg" />
+            <input type="hidden" name="id" value="{$_GET[id]}" />
+			<input name="files[]" id="cover" type="file" class="f-file" /></p>	
+			<p>
+				<input name="Submit" type="submit" class="f-button"  id="Submit" value="上传头像" />
+				<input name="next" type="button" id="net" class="f-button f-alt" value="跳过上传,完成创建" onClick="javascript:location.href='__URL__/show/id/{$_GET[id]}';" />
+			</p>
+		</form>
+	</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

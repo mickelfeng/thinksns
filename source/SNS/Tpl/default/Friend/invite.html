@@ -1,0 +1,73 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+            <div id="toc">
+                <ul>
+                <li><a href="__APP__/Friend/index">我的好友</a></li>
+                <li class="current"><a href="__APP__/Friend/invite">邀请好友</a></li>
+				<li><a href="__APP__/Friend/search">搜索好友</a></li>
+				<li><a href="__APP__/Friend/grabber">寻找好友</a></li>
+                </ul>
+            </div>
+          <div class="block">
+	<h3>邀请好友</h3>
+	<eq name="callback" value="success"><h1><font color=green>发送成功！！</font></h1></eq>
+	<eq name="callback" value="error"><h1><font color=red>发送失败！！</font></h1></eq>
+    <form action="__APP__/Public/userInvite" method="post" enctype="application/x-www-form-urlencoded" name="userInvite" id="inviteForm">
+		<div>
+			<label class="f-label" for="emails">好友的 Email</label>
+            <textarea name="userInviteEmail" cols="50" rows="5" class="kk_top" id="emails"></textarea>
+		</div>
+		<!--div>
+			<label class="f-label" for="extranote">想对好友说的话</label>
+
+			<textarea name="body" id="extranote" rows="5" cols="50" maxlength="200"></textarea>
+		</div-->
+		<div>
+			<strong>主题：您的朋友{$user.name}正在体验ThinkSNS，邀请加您为好友。</strong>
+			<div id="invitation">
+            <img src="{$user.id|getUserFace='m'}" width='100' border='0' id="i-image" />
+				<h4>{$user.name}邀请你体验ThinkSNS</h4>
+
+				<p>ThinkSNS基于许多优秀的开源软件开发，提供全方位的社交网络解决方案</p>
+				<p>请点击下面的链接注册并成为{$user.name}的好友</p>
+			  <p><span class="fakelink"><a href="#">请点击这里</a></span></p>
+				<p>ThinkSNS (<span class="fakelink">demo.thinksns.com</span>)</p>
+				
+			</div>
+		</div>
+
+		<p class="act">
+            <input name="Submit" type="submit"  class="f-button"  value="邀请" id="Submit" />
+		</p>
+	</form>
+</div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

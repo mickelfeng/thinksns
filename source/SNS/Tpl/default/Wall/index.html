@@ -1,0 +1,167 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{$userId|getUserName}的留言板 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+		<!-- Fantasy 添加-->
+	<script type="text/javascript" src="/Public/Js/Ajax/Qlib.js" ></script>
+	<script type="text/javascript" src="/Public/Js/Ajax/ajax_rely.js"></script>
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+		 	<!-- main -->
+                <table width="646" height="40" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="27" height="40" valign="top"><table width="27" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="34" height="39" bgcolor="#F5F5F5">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td height="1" bgcolor="#CCCCCC"></td>
+                        </tr>
+                    </table></td>
+                    <td width="47" height="40" align="center" valign="top"><table width="65%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="20" bgcolor="#F5F5F5">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="center"><img src="{$userId|getUserFace}" width="48" /></td>
+                        </tr>
+                    </table></td>
+                    <td width="572" height="40" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="lift">
+                        <tr>
+                          <td height="39" colspan="2" valign="bottom" bgcolor="#F5F5F5"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td align="left"><strong class="heseda">{$userId|getUserName}</strong></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        <tr>
+                          <td height="1" colspan="2" bgcolor="#CCCCCC"></td>
+                        </tr>
+                        <tr>
+                          <td valign="top" style="padding-top:5px;">&nbsp;<span class="lanse"><a href="__APP__/Space/index/id/{$userId}">{$userId|getUserName}空间</a></span></td>
+                          <td height="23" align="left" valign="middle">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td width="76%" valign="top" style="padding-top:5px;">&nbsp;</td>
+                          <td width="24%" height="23" align="left" valign="middle">&nbsp;</td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                </table>
+                  <table width="627" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;">
+
+                      <tr>
+                        <td height="20" bgcolor="#FFFFFF"><span class="lanse" style="padding-left:15px;"><strong>{$userId|getUserName}的留言版</strong></span></td>
+                      </tr>
+                      <tr>
+                        <td height="1" bgcolor="#cccccc"></td>
+                      </tr>
+                      <tr>
+                        <td height="20" align="left" bgcolor="#FFFFFF" style="padding-left:15px;">共有 <span class="lanse" id="gbnum">{$count} </span>条留言</td>
+                      </tr>
+                      <tr>
+                        <td height="20" align="left" bgcolor="#F7F7F7"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td align="center" bgcolor="#FFFFFF">
+			     <notme id="userId">
+                            <form>
+                                <input type="hidden" id="userId" name="userId" value="{$userId}" />
+                                <input type="hidden" id="guestId" name="guestId" value="{$guestId}" />
+                                <input type="hidden" name="replyId" value="{$replyId}" />
+                                <input type="hidden" id="guestImg" value="{$guestId|getUserFace}">
+				                <input type="hidden" id="guestName" value="{$guestId|getUserName}">
+				                <input type="hidden" id="guestProv" value="{$guestId|getUserProvince}">
+                                <textarea name="content" id="con" rows="" class="kk_top" style="width:96%; height:80px; margin-top:5px;"></textarea>
+                                <div style="margin:5px 10px;">
+                                  <div align="right" style="position:relative">
+                                   <!-- <input type="submit" name="Submit" value="留言" class="an_bg" id="ajaxly" />-->
+                                     <span id="flag" style="color:#0A6FCD"></span>
+             					     <span id="load" style="background:#DD0000 ;color:#FFFFFF;height:1.6em;line-height:1.6em;overflow:hidden;position:absolute;left:0px;bottom:0px;width:75px;z-index:100;display:none"><B>LOADING...</B></span>
+                 <input type="button"   value="留 言" id="ajaxly" class="f-button" />
+                                    </div>
+                                </div>
+                                </form>
+			 </notme>
+			 </td>
+                          </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td colspan="2" bgcolor="#FFFFFF">
+                              <table width="627" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td width="610">
+                                 	<ul id="ul" style="margin-left:10px">
+                                  	<volist name="list" id="vo">
+                                 <li id="0{$vo.id}" id="board-topic-floor18">
+				<!--  <li id="0{$vo.id}"> -->
+                                    <div class="post" id="{$vo.id}">
+                                        <p class="image">
+                                        	<a href="__APP__/Space/index/id/{$vo.guestId}"><img src="{$vo.guestId|getUserFace}" border="0" width="48" /></a>
+                                        </p>
+                                        <div class="info">
+                                            <span class="author"><a href="__APP__/Space/index/id/{$vo.guestId}">{$vo.guestId|getUserName}</a> ({$vo.guestId|getUserProvince})</span>
+                                            <span class="time">{$vo.cTime|toDate="Y-m-d H:m"}</span>
+                                            <!-- <span class="floor"><a href="__APP__/Wall/index/re/{$vo.id}/id/{$vo.guestId}">回复</a></span> -->
+					    <me id="vo.guestId">
+						<span class="delete"><a class="Qconfirm" id="{$vo.id}" rel="/index.php/Gbook/delete" href="javascript:void(0)"  title="确定要删除?">删除</a></span>
+					    </me>
+					    <notme id="vo.guestId">
+						<span class="actions"><a href="__APP__/Wall/index/re/{$vo.id}/id/{$vo.guestId}">回复</a></span>
+					    </notme>
+                                        </div>
+                                        <div class="content">
+                                            <div class="orig-content">
+                                                <div>{$vo.content|cleanJs|text2html}</div>
+                                            </div>
+                                       	</div>
+                                   	</div>
+                                   	</li>
+                                   	</volist>
+                               	 	</ul>
+                                  </td>
+                                </tr>
+                              </table>
+                                <table width="605" height="1" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:5px;">
+                                  <tr>
+                                    <td width="627" height="1" bgcolor="#CCCCCC"></td>
+                                  </tr>
+                                </table>
+                                <table width="627" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                                <tr>
+                                  <td width="627" valign="top" style="padding:5px;">                    </td>
+                                </tr>
+                              </table></td>
+                            </tr>
+
+                            <tr>
+                              <td height="30" colspan="2" align="center" bgcolor="#FFFFFF" class="foot">{$page}</td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                    </table>
+            <!-- /main -->
+		</div>
+		<!-- /content -->
+	</div>
+  <!-- footer -->
+	<include file="../Public/footer" />
+  <!-- /footer -->
+</div>
+</body>
+</html>
+

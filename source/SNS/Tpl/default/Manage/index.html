@@ -1,0 +1,130 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<title>{&SITE_TITLE}</title>
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function checkAll(){
+	var i;
+	var	colInputs = document.getElementById("new-member").getElementsByTagName("input");
+	var l = colInputs.length;
+	for	(i=0; i < l; i++)
+	{
+		if(colInputs[l-1].checked){
+			colInputs[i].checked=false;
+		}else{
+			colInputs[i].checked=true;
+		}
+		
+	}
+}
+function check(action,id){
+	var keyValue;
+	if (id)
+	{
+		keyValue = id;
+	}else {
+		keyValue = getSelectCheckboxValues();
+	}
+	if (!keyValue)
+	{
+		alert('请选择用户！');
+		return false;
+	}
+	location.href = URL+"/"+action+"/id/"+keyValue;
+}
+function getSelectCheckboxValues(){
+	var obj = document.getElementsByName('key');
+	var result ='';
+	var j= 0;
+	for (var i=0;i<obj.length;i++)
+	{
+		if (obj[i].checked==true){
+			result += obj[i].value+",";
+		}
+	}
+	return result.substring(0, result.length-1);
+}
+//-->
+</SCRIPT>
+<base target="_self" />
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+.STYLE3 {color: #FF0000}
+.STYLE7 {color: #999999}
+-->
+</style>
+</head>
+<body>
+<div id="doc">
+<!-- header -->
+<include file="../Public/top" />
+<!-- /header -->
+	
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	
+	<div id="container">
+	<div id="content">
+	<div class="ui-t1">
+        <div class="ui-gf">
+            <div class="sect" id="newsfeed">
+                <div id="new-member" class="sect">
+                	<h3>共{$count}位朋友</h3>
+                    <div class="pagination">
+                    {$page}
+                    </div>
+                    <div class="sect-content">
+                    <ol class="al">
+                    <volist name="list" id="vo">
+                    <li style="border:{$vo.id|getUserStatusColor} solid 1px;margin:2px;padding:3px;"><a href="#"><img src="{$vo.id|getUserFace}" alt="{$vo.id|getUserName}_{$vo.id}" width='48' border="0" /><span>
+                      <input name="key" type="checkbox" value="{$vo.id}" /><font color="{$vo.id|getUserStatusColor}">{$vo.id|getUserName}</font></span></a>
+                    </li>
+                    </volist>
+                    </ol><br />
+                    <input name="true" type="button" value="设为真实" class="f-button" onClick="check('t');" />
+                    <input name="nottrue" type="button" value="设为不真实" class="f-button" onClick="check('f');" style="background:#999999" />
+                    <input name="lock" type="button" value="锁定" class="f-button" onClick="check('lock');"   style="background:#FF0000" />
+					<input name="checkall" type="checkbox" id="checkAll" onClick="checkAll();" /><a href="#" onClick="checkAll();">全选</a>             </div>
+					<div class="pagination">
+                    {$page}
+                    </div>
+        		</div>
+     		</div>
+     	</div>
+		<div class="ui-g">
+			<div class="sect" id="level">
+				<h3>会员状态</h3>
+				<div class="sect-content">
+				  <p><span class="STYLE1">蓝色</span>：真实用户</p>
+				  <p><span class="STYLE7">灰色</span>：不真实用户</p>
+				  <p><span class="STYLE3">红色</span>：锁定用户</p>
+				  <p>没名字的未尚未激活用户</p>
+				</div>				
+		  </div>
+            <div class="sect" id="quan-ad">
+                <h3>圈内动态</h3>
+                <div class="sect-content">
+                    <ul>
+                    <li>办公圈新版逐步上线！</li>
+                    <li>相册功能测试！！</li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+	</div>
+	</div>
+	</div>
+	
+<!-- footer -->
+<include file="../Public/footer" />
+<!-- /footer -->
+</div>
+</body>
+</html>

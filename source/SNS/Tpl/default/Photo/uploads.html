@@ -1,0 +1,65 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        <div id="title">
+			<h2>{$albumTitle}</h2>
+		</div>
+		<div id="header">
+            <div id="toc">
+                <ul>
+                <li><a href="__APP__/Photo/editAlbum/albumId/{$albumId}">编辑相册信息</a></li>
+                <li><a href="__APP__/Photo/editPhotos/albumId/{$albumId}">编辑照片</a></li><!-- 空相册不显示 -->
+                <li class="current"><a href="__APP__/Photo/uploads/albumId/{$albumId}">上传更多照片</a></li>
+                <li class="alt"><a href="__APP__/Photo/album/albumId/{$albumId}">返回相册</a></li>
+                </ul>
+                <p class="bar">已有 {$photoCount} 张照片</p><!-- 空相册不显示 -->
+            </div>
+		</div>
+        <div id="wrap">
+            <div id="photo-upload">
+                <p>支持 JPG、GIF 和 PNG 格式的照片，每张最大 5M。</p>
+            
+                <form action="__APP__/Photo/doUpload" method="post" id="pu-form" enctype="multipart/form-data">
+                    <ol style="line-height:30px;">
+					<li><input type="file" class="f-file" name="files[]" /></li>
+					<li><input type="file" class="f-file" name="files[]" /></li>
+					<li><input type="file" class="f-file" name="files[]" /></li>
+					</ol>
+                    <input type="submit" class="f-button" value="上传图片" />
+                    <input type="hidden" name="albumId" value="{$albumId}" />
+                </form>
+            </div>
+            <div id="pu-back"> 
+                <p class="pu-back unsharp">上传色情、反动等照片将导致你的账号被删除。</p>
+            </div>
+            </div>
+        </div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Public/Js/PCAS.js"></script>
+
+<title>工作信息修改 - {&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- top -->
+	<include file="../Public/top" />
+	<!-- /top -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+			<div id="toc">
+			<ul>
+			<li><a href="__APP__/Account/basic">基本信息</a></li>
+			<li><a href="__APP__/Account/contact">联系信息</a></li>
+			<li><a href="__APP__/Account/interest">兴趣爱好</a></li>
+			<li><a href="__APP__/Account/education">教育信息</a></li>
+			<li class="current"><a href="__APP__/Account/work">工作信息</a></li>
+			<li><a href="__APP__/Account/face">上传头像</a></li>
+			</ul>
+			</div>
+			<form  action="__APP__/Account/doChangeWorks" method="post" enctype="application/x-www-form-urlencoded" name="doChangeWorks" class="nf" id="account-work">
+
+				<p class="note">填写工作信息，在{&SITE_NAME}找到过去和现在的同事<br />可以通过<a href="__APP__/Account/privacy">隐私设置</a>控制谁可以看见以下内容</p>
+				<div id="company" class="company">
+					<p>
+						<label class="f-label">公司：</label>
+						<input name="company" type="text" class="f-text" value="{$works.company}" />
+					</p>
+					<p>
+						<label class="f-label">描述：</label>
+						<textarea name="company_info">{$works.company_info}</textarea>
+					</p>
+					<p><label class="f-label">工作地：</label>
+					<select name="province"></select>
+					<select name="city"></select>
+					<select name="area"></select>
+					<script language="javascript" defer> new PCAS("province","city","area","{$works.province}","{$works.city}","{$works.area}"); </script>
+					</p>
+				</div>
+				<p class="act">
+					<input name="Submit" type="submit" class="f-button" value="保存" />
+				</p>
+			</form>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

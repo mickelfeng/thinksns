@@ -1,0 +1,108 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>网络 - {&SITE_TLTLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+
+<div id="title">
+
+	<h2>{$net.title}<span class="pipe">-</span><em>{$net.tag}</em></h2>
+	</div>
+<div id="network">
+<div class="narrow">
+	
+	<div id="nk-photo" class="sect">
+		<h3>相册</h3>
+		<div class="sect-content">
+			<ul class="il">
+			<volist name="album" id="album">
+				<li>
+				<div class="album">
+				<p class="image"><a href="__APP__/Photo/album/albumId/{$album.id}"><img src="__PUBLIC__/Thumb/?w=72&h=60&url={$album.id|getAlbumCover}" alt="{$album.name}" /></a></p>
+				<table class="info">
+					<caption><a href="__APP__/Photo/album/albumId/{$album.id}">{$album.title}</a></caption>
+					<tr><td><a href="__APP__/space/{$album.userId}">{$album.userId|getUserName}</a></td></tr>
+					<tr><td>{$album.cTime|friendlyDate}</td></tr>
+				</table>
+				</div>
+				</li>
+			</volist>
+			</ul>
+		</div>
+	</div>
+	<div id="nk-group" class="sect">
+		<h3>群组</h3>
+		<div class="sect-content">
+			<ul class="il">
+			<volist name="group" id="group">	
+			<li>
+			<div class="group">
+				<p class="image"><a href="__APP__/Group/show/id/{$group.id}"><img src="__PUBLIC__/Thumb?w=72&h=72&url={$group.cover}" alt="{$group.name}" /></a></p>
+				<table class="info">
+					<caption><a href="__APP__/Group/show/id/{$group.id}">{$group.name|getShort="10"}</a></caption>
+					<tr><td><a href="__APP__/Group/member/id/{$group.id}">{$group.memberCount} 名成员</a></td></tr>
+					<tr><td>{$group.threadCount} 个主题</td></tr>
+				</table>
+			</div>
+			</li>
+			</volist>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="wide">
+
+	  <div id="nk-member" class="sect">
+		<h3>成员</h3>
+		<div class="sect-content">
+			<ol class="al">
+				<volist name="user" id="user">
+				<li>
+					<a href="__APP__/space/{$user.id}"><img src="{$user.id|getUserFace}" alt="{$user.id|getUserName}" /><span>{$user.id|getUserName}</span></a>
+				</li>
+				</volist>
+			</ol>
+		</div>
+	</div>
+	<div id="nk-share" class="sect">
+		<h3>会员动态</h3>
+		<div class="sect-content">
+			<ul>
+			<volist name="feed" id="feed">
+			<li>
+			<div class="feed feed-{$feed.action}">
+				<a href="#" class="type">{$feed.action}</a>
+				<div class="brief"><a href="__APP__/space/{$feed.userId}">{$feed.userId|getUserName}</a> {$feed.title} <span>{$feed.cTime|friendlyDate}</span></div>
+				<neq name="feed.info" value=""><div class="detail">{$feed.info}</div></neq>
+			</div>
+			</li>
+			</volist>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+	    <div id="content">
+        	<div id="header">
+                <p class="image"><a href="__APP__/space/{$uid}"><img src="{$uid|getUserFace}" width="48" /></a></p>
+                <h2><me id="uid">我<else />{$uid|getUserName}</me>的日志</h2>
+                <p class="actions"><a href="__APP__/space/{$uid}"><me id="uid">我<else />{$uid|getUserName}</me>的空间</a></p>	
+             	<div id="toc">
+                    <ul>
+					<me id="uid">
+						<li><a href="__APP__/Blog/friends">朋友的日志</a></li>
+						<li class="current"><a href="__APP__/blog/{$mid}">我的日志</a></li>
+                        <!--li><a href="__APP__/Blog/drafts">草稿箱</a></li-->
+					<else />
+						<li class="current"><a href="__APP__/blog/{$uid}">{$uid|getUserName}的日志</a></li>
+						<li><a href="__APP__/Blog/friends">朋友的日志</a></li>
+						<li><a href="__APP__/blog/{$mid}">我的日志</a></li>
+                        <!--li><a href="__APP__/Blog/drafts">草稿箱</a></li-->
+					</me>                    	
+                    </ul>
+                    <p class="bar">{$count} 篇日志</p>
+                    <div class="shortcut"><a href="__APP__/Blog/write" class="shortcut-link">写新日志</a></div>
+                </div>
+            </div>
+            <div class="ui-t2">
+                <div class="ui-gf">
+                    <ul id="bloglist">
+                    	<volist name="list" id="vo">
+                        <li>
+                            <div class="blog-entry">
+                                <p class="image">
+                                <a href="__APP__/Blog/index/id/{$vo.userId}"><img src="{$vo.userId|getUserFace}" alt="{$vo.userId|getUserName}" width="48" /></a>
+                                </p>
+                                <div class="info">
+                                    <h4><a href="__APP__/Blog/content/id/{$vo.id}">{$vo.title}</a></h4>
+                                    <span class="author">
+                                    <a href="__APP__/Blog/index/id/{$vo.userId}">{$vo.userId|getUserName}</a> ({$vo.userId|getUserProvince})</span>
+                                    <span class="time">{$vo.cTime|friendlyDate}</span>
+                                </div>
+                                <div class="summary">
+                                    <!--<a href="__APP__/Blog/content/id/{$vo.id}">
+                                    <img src="" alt="" /></a> -->						
+                                    <p>{$vo.content|getBlogSummary}</p>
+                                    <a href="__APP__/Blog/content/id/{$vo.id}">阅读全文</a>
+                                </div>
+                                <p class="stat">
+								阅读 {$vo.readCount}
+								<span class="pipe">|</span>
+                               	评论 {$vo.id|getCommentCount="Blog"}
+                                <span class="pipe">|</span>
+                                <a href="__APP__/Blog/content/id/{$vo.id}#blog-comment">发表评论</a>					
+                                </p>
+                            </div>
+                        </li>
+                        </volist>
+                    </ul>
+                    <div class="pagination">
+                    {$page}
+                    </div>	
+                </div>
+                <div class="ui-g">
+                </div>
+            </div>
+      </div>
+      <!-- /content -->
+  </div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

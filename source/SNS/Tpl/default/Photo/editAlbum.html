@@ -1,0 +1,84 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+        <div id="title">
+			<h2>{$vo.title}</h2>
+		</div>
+		<div id="header">
+            <div id="toc">
+                <ul>
+                <li class="current"><a href="__APP__/Photo/editAlbum/albumId/{$vo.id}">编辑相册信息</a></li>
+                <li><a href="__APP__/Photo/editPhotos/albumId/{$vo.id}">编辑照片</a></li><!-- 空相册不显示 -->
+                <li><a href="__APP__/Photo/uploads/albumId/{$vo.id}">上传更多照片</a></li>
+                <li class="alt"><a href="__APP__/Photo/album/albumId/{$vo.id}">返回相册</a></li>
+                </ul>
+                <p class="bar">已有 {$vo.photoCount} 张照片</p><!-- 空相册不显示 -->
+            </div>
+		</div>
+		<div id="wrap">
+			<div id="album-create">
+			<form action="__APP__/Photo/doEditAlbum" method="post" enctype="application/x-www-form-urlencoded">
+            <table class="form-layout"><tbody>
+            	<tr>
+                	<th>相册名</th>
+                	<td><input type="text" class="f-text" name="title" value="{$vo.title}" /></td>
+                </tr>
+                <tr>
+                	<th>描述</th>
+        			<td><textarea name="info">{$vo.info}</textarea></td>
+                </tr>
+                <tr>
+                    <th>可见度</th>
+                    <td>
+                        <select name="status">
+                            <option value="0" <eq name="vo.status" value="0">selected="selected"</eq>>全站用户可见</option>
+                            <option value="1" <eq name="vo.status" value="1">selected="selected"</eq>>相同网络用户及好友可见</option>
+                            <option value="2" <eq name="vo.status" value="2">selected="selected"</eq>>仅好友可见</option>
+                            <option value="3" <eq name="vo.status" value="3">selected="selected"</eq>>仅自己可见</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td class="fl-act">
+						<input type="hidden" name="id" value="{$vo.id}" />
+                        <input type="submit" class="f-button" value="保存编辑" />
+                        <input type="button" class="f-button f-alt" value="返回相册" onClick="window.location='__APP__/album/{$vo.id}'"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><a href="#" rel="__APP__/Photo/delAlbum/albumId/{$vo.id}" id="del-album">删除相册</a></td>
+                </tr>
+                </tbody></table>
+                </form>
+            </div>
+		</div>
+		<!-- /content -->
+	</div>
+	
+	
+	
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<tagLib name="html" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<include file="../Public/header" />
+<link href="../Public/images/base.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Public/Js/smartEditor/smartEditor.js"></script>
+<title>{&SITE_TITLE}</title>
+<base target="_self" /></head>
+<body>
+<div id="doc">
+	<!-- header -->
+	<include file="../Public/top" />
+	<!-- /header -->
+	<!-- left -->
+	<include file="../Public/left" />
+	<!-- /left -->
+	<div id="container">
+		<!-- content -->
+		<div id="content">
+<div id="blog-edit-title">
+	<h2>编辑日志</h2>
+</div>
+<div id="wrap" class="yui-skin-sam">
+	<div id="blog-edit">
+    <form action="__APP__/Blog/update" method="post" enctype="multipart/form-data" name="blog" class="antidis">
+		
+			<h4>标题：</h4>
+			<div class="sect">
+            <input name="id" type="hidden" id="id" value="{$blog.id}" /><input name="title" type="text"  class="f-text" size="60" id="title" value="{$blog.title}" maxlength="40" />
+		
+			</div>
+			<div class="sect">
+				 <html:editor type="FCKeditor" id="editor" name="content"  content="{$blog.content|cleanJs}" />
+			</div>
+
+			<!--div id="blog-pics" class="sect">
+				<ul>
+									</ul>
+				<h4>上传照片：</h4>
+				<input type="file" class="f-file" name="picture" />
+			</div-->
+			<div id="blog-private" class="sect">
+				<h4>隐私设置：</h4>
+				<select name="private">
+                  <option selected="selected" value="1">相同网络用户及好友可见</option>
+                  <option value="2">仅好友可见</option>
+                  <option value="3">仅自己可见</option>
+                  </select>
+			</div>
+			<p class="act"><input name="Submit" type="submit" class="f-button" value="修改日志" />
+									
+					<!--input type="button" class="f-button f-alt" name="delete" id="blog-delete" value="删除" rel="/blog?a=del&r=130087" />
+					<input type="button" class="f-button f-alt" name="discard" value="取消" onclick="window.location='/blog?r%5B0%5D=130087&r%5B1%5D=104975'" /-->
+							</p>
+		</form>
+	</div>
+</div>
+	</div>
+		<!-- /content -->
+	</div>
+	<!-- footer -->
+	<include file="../Public/footer" />
+	<!-- /footer -->
+</div>
+</body>
+</html>
