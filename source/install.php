@@ -20,7 +20,11 @@
 	</script>
 </head>
 
-		<?php
+<?php
+
+if(phpversion()<5.0.0){
+	echo "当前 php版本 ".phpversion()."低于系统最低要求！无法安装！";
+}
 function ErrorInfo()
 {
 return "<ul style='font-family:Courier;font-size:11px;background:#FDF5E6;color:#696969;margin:3px;padding:10px;border:1px solid #696969;'>Notice!: System Error<li style='font-family:Courier;list-style-type:none'>ErrInfo: ".mysql_error()."</li><li style='font-family:Courier;list-style-type:none'>ErrCode: ".mysql_errno()."</li><li style='font-family:Courier;list-style-type:none'>ErrURIs: ".$_SERVER['REQUEST_URI']."</li></ul>";
@@ -73,7 +77,7 @@ if(isset($_POST['install']))	//提交创建
         echo "数据导入成功!</span>";
 
         fclose($fp) or die("Can't close file $file_name");//关闭文件
-		$user_sql	=	"INSERT_INTO think_user (name,email,password) values ('管理员','".$_POST[adminname]."','".md5($_POST[adminpass])."')";
+		$user_sql	=	"INSERT_INTO think_user (name,email,password) values ('管理员','".$_POST['adminname']."','".md5($_POST['adminpass'])."')";
 		@mysql_query($user_sql);
 		//把信息写入config.php
 		if(file_exists('config.inc.php')){
@@ -130,7 +134,7 @@ if(isset($_POST['install']))	//提交创建
 }
 else
 {
-	?>
+?>
 		<body>
 		<h3>安装ThinkSNS</h3>
 		<div id="db">
@@ -169,6 +173,6 @@ else
 		</div>
 		</body>
 	</html>
-	<?php
+<?php
 }
 ?>
