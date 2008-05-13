@@ -92,7 +92,7 @@ class PublicAction extends Action {
 			$code	=	jiami($email,'thinksns');
 			import('@.Util.sendmail');
 			$title	=	"ThinkSNS 密码修改";
-			$content	=	'请点击下面的链接修改密码<br/><a href="http://'.$_SERVER['HTTP_HOST'].WEB_PUBLIC_URL.'/changepassword/code/'.$code.'">点此修改密码</a>';
+			$content	=	'请点击下面的链接修改密码<br/><a href="http://'.$_SERVER['HTTP_HOST'].__APP__.'/Public/changepassword/code/'.$code.'">点此修改密码</a>';
 			if(sendemail($email,$title,$content)){
 				$this->success('发送成功！');
 			}else{

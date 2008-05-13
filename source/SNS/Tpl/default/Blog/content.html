@@ -25,7 +25,7 @@
                 <p class="actions"><a href="__APP__/space/{$vo.userId}"><me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的空间</a></p>
                 <div id="toc">
                     <p class="bar">{$count} 篇日志<span class="pipe">|</span>
-                    <a href="__APP__/Blog/index/id/{$vo.userId}">返回<me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的日志列表</a>
+                    <a href="__APP__/blogs/{$vo.userId}">返回<me id="vo.userId">我<else />{$vo.userId|getUserName}</me>的日志列表</a>
                     </p>
                 </div>
             </div>
@@ -79,25 +79,25 @@
                             <h4>发表评论<span id="load" style="display: none;color:red">Loading...</span></h4><a title="TOP" id="a_top" onClick="window.scrollTo(0,0);" href="javascript:;">TOP</a>
                             <form action="__APP__/Comment/insert" method="post">
                             <p>
-				<img onClick="insert(1)" src="http://cimg.bgquan.com/images/biaoqing/1.gif"/>
-				<!-- <img onclick="insert(2);" src="http://cimg.bgquan.com/images/biaoqing/2.gif"/> -->
-				<img onClick="insert(3)" src="http://cimg.bgquan.com/images/biaoqing/3.gif"/>
-				<img onClick="insert(4)" src="http://cimg.bgquan.com/images/biaoqing/4.gif"/>
-				<img onClick="insert(5)" src="http://cimg.bgquan.com/images/biaoqing/5.gif"/>
-				<img onClick="insert(6)" src="http://cimg.bgquan.com/images/biaoqing/6.gif"/>
-				<img onClick="insert(7)" src="http://cimg.bgquan.com/images/biaoqing/7.gif"/>
-				<img onClick="insert(8)" src="http://cimg.bgquan.com/images/biaoqing/8.gif"/>
-				<img onClick="insert(9)" src="http://cimg.bgquan.com/images/biaoqing/9.gif"/>
-				<img onClick="insert(10)" src="http://cimg.bgquan.com/images/biaoqing/10.gif"/>
-				<img onClick="insert(11)" src="http://cimg.bgquan.com/images/biaoqing/11.gif"/>
-				<img onClick="insert(12)" src="http://cimg.bgquan.com/images/biaoqing/12.gif"/>
-				<img onClick="insert(13)" src="http://cimg.bgquan.com/images/biaoqing/13.gif"/>
-				<img onClick="insert(14)" src="http://cimg.bgquan.com/images/biaoqing/14.gif"/>
-				<img onClick="insert(15)" src="http://cimg.bgquan.com/images/biaoqing/15.gif"/>
-				<img onClick="insert(16)" src="http://cimg.bgquan.com/images/biaoqing/16.gif"/>
-				<img onClick="insert(17)" src="http://cimg.bgquan.com/images/biaoqing/17.gif"/>
-				<!-- <img onclick="insert(18)" src="http://cimg.bgquan.com/images/biaoqing/18.gif"/> -->
-				<img onClick="insert(19)" src="http://cimg.bgquan.com/images/biaoqing/19.gif"/>
+				<img onClick="insert(1)" src="__PUBLIC__/Images/biaoqing/1.gif"/>
+				<!-- <img onclick="insert(2);" src="__PUBLIC__/Images/biaoqing/2.gif"/> -->
+				<img onClick="insert(3)" src="__PUBLIC__/Images/biaoqing/3.gif"/>
+				<img onClick="insert(4)" src="__PUBLIC__/Images/biaoqing/4.gif"/>
+				<img onClick="insert(5)" src="__PUBLIC__/Images/biaoqing/5.gif"/>
+				<img onClick="insert(6)" src="__PUBLIC__/Images/biaoqing/6.gif"/>
+				<img onClick="insert(7)" src="__PUBLIC__/Images/biaoqing/7.gif"/>
+				<img onClick="insert(8)" src="__PUBLIC__/Images/biaoqing/8.gif"/>
+				<img onClick="insert(9)" src="__PUBLIC__/Images/biaoqing/9.gif"/>
+				<img onClick="insert(10)" src="__PUBLIC__/Images/biaoqing/10.gif"/>
+				<img onClick="insert(11)" src="__PUBLIC__/Images/biaoqing/11.gif"/>
+				<img onClick="insert(12)" src="__PUBLIC__/Images/biaoqing/12.gif"/>
+				<img onClick="insert(13)" src="__PUBLIC__/Images/biaoqing/13.gif"/>
+				<img onClick="insert(14)" src="__PUBLIC__/Images/biaoqing/14.gif"/>
+				<img onClick="insert(15)" src="__PUBLIC__/Images/biaoqing/15.gif"/>
+				<img onClick="insert(16)" src="__PUBLIC__/Images/biaoqing/16.gif"/>
+				<img onClick="insert(17)" src="__PUBLIC__/Images/biaoqing/17.gif"/>
+				<!-- <img onclick="insert(18)" src="__PUBLIC__/Images/biaoqing/18.gif"/> -->
+				<img onClick="insert(19)" src="__PUBLIC__/Images/biaoqing/19.gif"/>
 				<br />
                                 <textarea name="content" id="p-cmt-body" rows="6" cols="60" maxlength="1000"></textarea>
                             </p>

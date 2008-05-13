@@ -46,12 +46,12 @@
                         <li>
                             <div class="blog-entry">
                                 <p class="image">
-                                <a href="__APP__/Blog/index/id/{$vo.userId}"><img src="{$vo.userId|getUserFace}" alt="{$vo.userId|getUserName}" width="48" /></a>
+                                <a href="__APP__/blogs/{$vo.userId}"><img src="{$vo.userId|getUserFace}" alt="{$vo.userId|getUserName}" width="48" /></a>
                                 </p>
                                 <div class="info">
                                     <h4><a href="__APP__/Blog/content/id/{$vo.id}">{$vo.title}</a></h4>
                                     <span class="author">
-                                    <a href="__APP__/Blog/index/id/{$vo.userId}">{$vo.userId|getUserName}</a> ({$vo.userId|getUserProvince})</span>
+                                    <a href="__APP__/blogs/{$vo.userId}">{$vo.userId|getUserName}</a> ({$vo.userId|getUserProvince})</span>
                                     <span class="time">{$vo.cTime|friendlyDate}</span>
                                 </div>
                                 <div class="summary">

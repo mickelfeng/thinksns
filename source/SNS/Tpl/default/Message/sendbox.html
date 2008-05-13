@@ -32,7 +32,7 @@
 			 <volist name="list" id="m" empty="没有消息">
 								<tr>
 					<td class="sel"></td>
-					<td class="ava"><a href="__APP__/space/{$m.toUserId}"><img src="__Public__/Thumb/?w=48&h=48&t=f&url={$m.toUserId|getUserFace}" alt="吴飞" border="0" /></a></td>
+					<td class="ava"><a href="__APP__/space/{$m.toUserId}"><img src="__PUBLIC__/Thumb/?w=48&h=48&t=f&url={$m.toUserId|getUserFace}" alt="{$m.toUserId|getUserName}" border="0" /></a></td>
 					<td class="per">给：<a href="__APP__/space/{$m.toUserId}">{$m.toUserId|getUserName}</a><span class="time">{$m.cTime|friendlyDate}</span></td>
 
 					<td class="title"><a href="__APP__/Message/read/id/{$m.id}">{$m.title|getShort="19"}</a><a href="#" class="summary">{$m.content|getShort="40"}</a></td>

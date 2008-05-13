@@ -43,7 +43,6 @@ class PhotoAction extends BaseAction
 		$this->assign('page',$page);
 		$this->display();
 	}
-
 	//相册显示
 	function album() {
 		if($_REQUEST['albumId']){
@@ -69,7 +68,6 @@ class PhotoAction extends BaseAction
 		$this->assign('page',$page);
 		$this->display();
 	}
-
 	//相册显示
 	function image() {
 		if($_REQUEST['id']){
@@ -78,16 +76,17 @@ class PhotoAction extends BaseAction
 			$this->error('错误的照片ID！');
 		}
 		$dao	=	D("Photo");
-		$photo	=	$dao->getById($photoId);
+		$photo	=	$dao->find($photoId);
 
 		if(!$photo->id){
 			$this->error('照片不存在或已被删除！');
 		}
 		//更新图片阅读数
-		$dao->updateReadCount($photoId);
+		$dao->setInc('readCount',"id='$photoId'");
 
 		$dao	=	D('Album');
 		$album	=	$dao->getById($photo->albumId);
+
 		//相册的图片列表缓存在album里也可以读photo表获取
 
 		$photos	=	explode(',',$album->photoIds);
@@ -130,17 +129,14 @@ class PhotoAction extends BaseAction
 		$this->assign('userId',Session::get(C('USER_AUTH_KEY')));
 		$this->display();
 	}
-
 	//创建相册
 	function create() {
-		$userId	=	Session::get(C('USER_AUTH_KEY'));
-		$this->assign('userId',$userId);
+		$this->assign('userId',$this->mid);
 		$this->display();
 	}
-
 	//执行创建相册
 	function doCreateAlbum() {
-		$userId	=	Session::get(C('USER_AUTH_KEY'));
+		$userId	=	$this->mid;
 		if(empty($_POST[title])){
 			$this->error("无标题!");
 		}else{
@@ -170,7 +166,6 @@ class PhotoAction extends BaseAction
 	}
 	//编辑相册
 	public function editAlbum() {
-		$userId	=	Session::get(C('USER_AUTH_KEY'));
 		if(empty($_GET['albumId'])){
 			$this->error("相册不存在!");
 		}else{
@@ -178,18 +173,20 @@ class PhotoAction extends BaseAction
 		}
 		$dao	=	D('Album');
 		$list	=	$dao->getById($albumId);
-		if($list->userId!=$userId){
+		if($list->userId!=$this->mid){
 			$this->error('只能编辑自己的相册！');
 		}
 		$this->assign('vo',$list);
 		$this->display();
 	}
 	public function doEditAlbum() {
-		$userId	=	Session::get(C('USER_AUTH_KEY'));
+		//更新相册数据
+		$this->updateAlbum($_POST['id']);
+		//更新相册信息
 		$dao = D('Album');
 		$vo = $dao->create();
 		$vo->mTime	=	time();
-		$vo->userId	=	$userId;
+		$vo->userId	=	$this->mid;
 		if($dao->save($vo)){
 			header("location:".__APP__."/Photo/album/albumId/".$_POST['id']);
 		}else{
@@ -198,7 +195,7 @@ class PhotoAction extends BaseAction
 	}
 	//编辑图片
 	public function editPhotos() {
-		$userId	=	Session::get(C('USER_AUTH_KEY'));
+		$userId	=	$this->mid;
 		if(empty($_GET['albumId'])){
 			$this->error("相册不存在!");
 		}else{
@@ -206,9 +203,11 @@ class PhotoAction extends BaseAction
 
 			$dao	=	D('Album');
 			$list	=	$dao->getById($albumId);
+
 			if($list->userId!=$userId){
 				$this->error('只能编辑自己的相片！');
 			}
+
 			$this->assign('album',$list);
 
 			$dao	=	D('Photo');
@@ -225,8 +224,8 @@ class PhotoAction extends BaseAction
 		$albumId		=	intval($_POST['albumId']);
 		$coverPhotoId	=	intval($_POST['coverPhotoId']);
 		$dao = D('Photo');
-		if($_POST['coverPhotoId']){
-			$dao->setAlbumCover($albumId,$coverPhotoId);
+		if($coverPhotoId>0){
+			D('Album')->setField('coverPhotoId',$coverPhotoId,"id='$albumId'");
 		}
 		if($_POST['info']){
 			foreach($_POST['info'] as $k=>$v){
@@ -243,31 +242,45 @@ class PhotoAction extends BaseAction
 				$result[] = $dao->deleteById($k);
 			}
 		}
-		$dao->updateAlbum($albumId);
+		$this->updateAlbum($albumId);
 		header("location:".__APP__."/album/".$albumId);
 	}
 	//删除照片
 	public function deletePhoto() {
 		$id	=	$_GET['id'];
 		$dao = D('Photo');
-		$photo		=	$dao->find("id='$id'",'id,albumId');
+		$photo		=	$dao->find($id,'id,albumId,userId,imagePath');
 		$albumId	=	$photo->albumId;
-		$result = $dao->deleteById($id);
+		if( $photo->userId != $this->mid ){
+			$this->error('只能删除自己的照片!');
+		}else{
+			//删除照片记录
+			$result =	$dao->deleteById($id);
+			//删除图片
+			unlink($photo->imagePath);
+			//重置相册数据
+			//D('Album')->setDec('photoCount',"id='$albumId'");
+			$this->updateAlbum($albumId);
+		}
 		if($result){
-			//$dao->updateAlbum($albumId);
 			header('location:'.__APP__.'/Photo/album/albumId/'.$albumId);
 		}else{
 			$this->error('删除照片失败！');
 		}
 	}
 	//删除相册
-	public function deleteAlbum() {
-		$id	=	$_GET['id'];
-		$dao = D('Photo');
-		$result =	$dao->deleteAlbum($id);
+	public function delAlbum() {
+		$id	=	$_GET['albumId'];
+		$dao = D('Album');
+		$album	=	$dao->find($id,'id,userId');
+		if( $album->userId != $this->mid ){
+			$this->error('只能删除自己的相册!');
+		}else{
+			$result =	$dao->deleteById($id);
+		}
 		if($result){
-			$dao->deleteAlbumPhotos($id);
-			header('location:'.__APP__.'/Photo/my');
+			D('Photo')->deleteAlbumPhotos($id);
+			header('location:'.__APP__.'/photos/'.$this->mid);
 		}else{
 			$this->error('删除相册失败！');
 		}
@@ -290,15 +303,19 @@ class PhotoAction extends BaseAction
 	//上传更多图片
 	public function uploads() {
 		$dao	=	D('Album');
-		$id		=	$_REQUEST['albumId'];
-		$list	=	$dao->getById($id);
+		$id		=	$_GET['albumId'];
+		$list	=	$dao->find($id);
+		/* 限制照片数 * /
+		if($list->photoCount > 100){
+			$this->error('当个相册照片数目超过100张，请再建一个新相册！');
+		}
+		/**/
 		$this->assign('albumTitle',$list->title);
 		$this->assign('albumId',$id);
 		$this->assign('userId',$list->userId);
 		$this->assign('photoCount',$list->photoCount);
 		$this->display();
 	}
-
 	//执行批量上传操作
 	public function doUpload() {
 		$userId	=	$this->mid;
@@ -321,7 +338,9 @@ class PhotoAction extends BaseAction
 				}
 			}
 			$photoCount	=	count($photos);
+			//更新相册
 			D('Album')->setInc('photoCount',"id='$albumId'",$photoCount);
+			//$this->updateAlbum($albumId);
 			//记录动态
 			$photoIds	=	implode(',',$photos);
 			if($photoCount>0){
@@ -336,6 +355,30 @@ class PhotoAction extends BaseAction
 			$this->error('上传失败！');
 		}
 	}
+	protected function updateAlbum($albumId) {
 
+		$photoDao	=	D('Photo');
+		$albumDao	=	D('Album');
+
+		//重置相册数
+		$result = $photoDao->findAll("albumId='$albumId'",'id','id asc');
+		foreach($result as $v){
+			 $photos[]	=	$v->id;
+		}
+		$count	=	$photoDao->count("albumId='$albumId'");
+
+		$photoIds	=	implode(',',$photos);
+		$albumDao->setField('photoCount',$count,"id='$albumId'");
+		$albumDao->setField('photoIds',$photoIds,"id='$albumId'");
+		$albumDao->setField('mTime',time(),"id='$albumId'");
+
+		//重置相册封面
+		$album		=	$albumDao->find($albumId);
+		$coverId	=	$album->coverPhotoId;
+		if($photoDao->count("id='$coverId'") == 0){
+			$cover = $photoDao->findAll("albumId='$albumId'",'id','id desc',1);
+			$albumDao->setField('coverPhotoId',$cover[0]->id,"id='$albumId'");
+		}
+	}
 }
 ?>

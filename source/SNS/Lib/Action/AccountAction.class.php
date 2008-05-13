@@ -99,7 +99,7 @@ class AccountAction extends BaseAction
 		$map->put('id',$this->mid);
 		$map->put('name',$_POST['name']);
 		$dao = D('User');
-		if($insertId	=	$dao->save($map)){
+		if($dao->save($map)){
 			/* add_user_feed */
 				$feedTitle	=	"把名字从‘".$oldName."’改成了‘".$_POST['mame']."’";
 				$this->addUserFeed($userId,'add','profile',$userId,$feedTitle);

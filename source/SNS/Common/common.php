@@ -1,5 +1,4 @@
 <?php
-
 //获取某模块记录总数
 function getCount($model,$id){
 	$count = D($model)->count($id);
@@ -111,7 +110,7 @@ function ubb($Text) {
 	$Text=preg_replace("/\[img\](.+?)\[\/img\]/is","<img src=\\1>",$Text);
 	$Text=preg_replace("/\[img\s(.+?)\](.+?)\[\/img\]/is","<img \\1 src=\\2>",$Text);
 
-	$Text=preg_replace("/\[face\](.+?)\[\/face\]/is","<img src=\"./Public/Images/biaoqing/\\1.gif>",$Text);
+	$Text=preg_replace("/\[face\](.+?)\[\/face\]/is","<img src=\"".WEB_PUBLIC_URL."/Images/biaoqing/\\1.gif\">",$Text);
 
 	$Text=preg_replace("/\[color=(.+?)\](.+?)\[\/color\]/is","<font color=\\1>\\2</font>",$Text);
 	$Text=preg_replace("/\[colorTxt\](.+?)\[\/colorTxt\]/eis","color_txt('\\1')",$Text);
@@ -305,14 +304,14 @@ function getUserFace($userId,$size='s') {
 		$s	=	's';
 	}
 	$sid	=	getSID($userId);
-	$face	=	'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_PUBLIC_URL.'/Public/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
+	$face	=	'http://'.$_SERVER['HTTP_HOST'].WEB_PUBLIC_URL.'/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
 	$outface=	'./Public/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
 	/** /
 	//图片分离的时候可以启用 判断远程文件是否存在
 	$exists	=	remote_file_exists($face);
 	/**/
 	if(!file_exists($outface)){
-		return WEB_PUBLIC_URL.'/Public/Images/noface.gif';
+		return WEB_PUBLIC_URL.'/Images/noface.gif';
 		exit;
 	}
 	return $face;
