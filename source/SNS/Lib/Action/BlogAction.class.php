@@ -99,7 +99,7 @@ class BlogAction extends BaseAction
 				$feedTitle	=	"添加了新日志";
 				$blogImages	=	matchImages(stripslashes($content));
 				if($blogImages){
-					$feedInfo	.=	"<a href=\"/Blog/content/id/{$result}\"><img src=\"".__PUBLIC__."/Thumb/?w=100&h=100&t=f&url={$blogImages[0]}\" alt=\"{$title}\" /></a>";
+					$feedInfo	.=	"<a href=\"/Blog/content/id/{$result}\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=100&h=100&t=f&url={$blogImages[0]}\" alt=\"{$title}\" /></a>";
 				}
 				$feedInfo	.=	"<strong><a href=\"/Blog/content/id/{$result}\">{$title}</a></strong><br />".getBlogShort($content);				$this->addUserFeed($this->mid,'add','blog',$result,$feedTitle,$feedInfo);
 			/* /add_user_feed */

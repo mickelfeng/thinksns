@@ -92,7 +92,7 @@ class PublicAction extends Action {
 			$code	=	jiami($email,'thinksns');
 			import('@.Util.sendmail');
 			$title	=	"ThinkSNS 密码修改";
-			$content	=	'请点击下面的链接修改密码<br/><a href="http://'.$_SERVER['HTTP_HOST'].__PUBLIC__.'/changepassword/code/'.$code.'">点此修改密码</a>';
+			$content	=	'请点击下面的链接修改密码<br/><a href="http://'.$_SERVER['HTTP_HOST'].WEB_PUBLIC_URL.'/changepassword/code/'.$code.'">点此修改密码</a>';
 			if(sendemail($email,$title,$content)){
 				$this->success('发送成功！');
 			}else{
@@ -168,7 +168,7 @@ class PublicAction extends Action {
 		$dao = D("User");
 		$userInfo  = $dao->find($this->mid);
 		$code	=	"http://".$_SERVER['HTTP_HOST'].__APP__."/Public/reg/code/".$code;
-		$face	=	'http://'.$_SERVER['HTTP_HOST'].__PUBLIC__.'/Uploads/User/'.$userInfo->id.'/face_m.jpg';
+		$face	=	'http://'.$_SERVER['HTTP_HOST'].WEB_PUBLIC_URL.'/Uploads/User/'.$userInfo->id.'/face_m.jpg';
 		$this->assign('fromuser',$userInfo->name);
 		$this->assign('code',$code);
 		$this->assign('face',$face);

@@ -45,7 +45,7 @@ class CommentAction extends BaseAction
 			elseif($_POST['module']=='Photo'){
 				/* add_user_feed */
 					$feedTitle	=	"评论了照片：";
-					$feedInfo	=	"<p class=\"image\"><a href=\"/photo/{$recordId}\"><img src=\"".__PUBLIC__."/Thumb/?w=100&h=100&url={$photoPath}\" alt=\"照片\" /></a></p>".'<div class="share-comment"><p>'.$content.'</p></div>';
+					$feedInfo	=	"<p class=\"image\"><a href=\"/photo/{$recordId}\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=100&h=100&url={$photoPath}\" alt=\"照片\" /></a></p>".'<div class="share-comment"><p>'.$content.'</p></div>';
 					$this->addUserFeed($userId,'add','comment',$recordId,$feedTitle,$feedInfo);
 				/* /add_user_feed */
 				$this->addUserAlert($toUserId,"reply".$_POST['module'],$_POST['recordId']);

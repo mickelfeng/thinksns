@@ -317,7 +317,7 @@ class PhotoAction extends BaseAction
 				$photo['imagePath']		=	$i['savepath'].$i['savename'];
 				if($photoid	=	$photoDao->add($photo)){
 					$photos[]	=	$photoid;
-					$feedInfo	.=	"<p class=\"image\"><a href=\"".__APP__."/Photo/image/id/{$photoid}\"><img src=\"".__PUBLIC__."/Thumb/?w=100&h=100&t=f&url={$photo[imagePath]}\" alt=\"照片\" /></a></p>";
+					$feedInfo	.=	"<p class=\"image\"><a href=\"".__APP__."/Photo/image/id/{$photoid}\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=100&h=100&t=f&url={$photo[imagePath]}\" alt=\"照片\" /></a></p>";
 				}
 			}
 			$photoCount	=	count($photos);

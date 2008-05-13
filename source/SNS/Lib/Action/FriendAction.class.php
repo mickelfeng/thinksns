@@ -161,7 +161,7 @@ class FriendAction extends BaseAction
 			$dao = D('User');
 			if($id = $dao->add($map)){
 				$code	=	"http://".$_SERVER['HOST_NAME'].__APP__."/Public/activate/code/".$code;
-				$face	=	str_replace(__PUBLIC__.'/Uploads/',"http://".$_SERVER['HOST_NAME'].__PUBLIC__.'/Uploads/',$userInfo->face);
+				$face	=	str_replace(WEB_PUBLIC_URL.'/Uploads/',"http://".$_SERVER['HOST_NAME'].WEB_PUBLIC_URL.'/Uploads/',$userInfo->face);
 				$this->assign('fromuser',$userInfo->name);
 				$this->assign('code',$code);
 				$this->assign('face',$face);
