@@ -304,16 +304,15 @@ function getUserFace($userId,$size='s') {
 	}else{
 		$s	=	's';
 	}
-	$p	=	str_replace('/index.php','',__APP__);
 	$sid	=	getSID($userId);
-	$face	=	'http://'.$_SERVER['HTTP_HOST'].'/'.$p.'/Public/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
+	$face	=	'http://'.$_SERVER['HTTP_HOST'].'/'.WEB_PUBLIC_URL.'/Public/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
 	$outface=	'./Public/Uploads/User/'.$userId.'/face_'.$s.'.jpg';
 	/** /
 	//图片分离的时候可以启用 判断远程文件是否存在
 	$exists	=	remote_file_exists($face);
 	/**/
 	if(!file_exists($outface)){
-		return $p.'/Public/Images/noface.gif';
+		return WEB_PUBLIC_URL.'/Public/Images/noface.gif';
 		exit;
 	}
 	return $face;
@@ -706,7 +705,6 @@ function getShare($id) {
 }
 function getShareContent($module='Space',$id) {
 	$content	=	'';
-	$p	=	str_replace('/index.php','',__APP__);
 	if($module=='Space'){
 		$blog	=	D('User')->find($id);
 		$userFace	=	getUserFace($id,'m');
@@ -721,7 +719,7 @@ function getShareContent($module='Space',$id) {
 		$blog	=	D('Blog')->find($id);
 		$titleImage	=	getBlogTitleImage($id);
 		if($titleImage){
-			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/blog/".$blog->id."\"><img src=\"".$p."/Thumb/?w=72&h=72&url=".$titleImage."\" alt=\"".$blog->title."\"></a></div>";
+			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/blog/".$blog->id."\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=72&h=72&url=".$titleImage."\" alt=\"".$blog->title."\"></a></div>";
 		}
 		$content .=
 		"<div class=\"share-content-desc\"><strong><a href=\"".__APP__."/blog/".$blog->id."\">".$blog->title."</a></strong> - <a href=\"".__APP__."/space/".$blog->userId."\">".getUserName($blog->userId)."</a><br>".getBlogShort($blog->content)."<br><a href=\"".__APP__."/blog/".$blog->id."\">阅读全文</a></div>";
@@ -731,7 +729,7 @@ function getShareContent($module='Space',$id) {
 		$titleImage	=	$photo->imagePath;
 		$album	=	D('Album')->find($photo->albumId);
 		if($titleImage){
-			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/photo/".$photo->id."\"><img src=\"".$p."/Thumb/?w=130&h=200&t=f&url=".$titleImage."\" alt=\"".$photo->title."\"></a></div>";
+			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/photo/".$photo->id."\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=130&h=200&t=f&url=".$titleImage."\" alt=\"".$photo->title."\"></a></div>";
 		}
 		$content .=
 		"<div class=\"share-content-desc\">相册:<a href=\"".__APP__."/album/".$album->id."\">".$album->title."</a><br>用户:<a href=\"".__APP__."/space/".$photo->userId."\">".getUserName($photo->userId)."</a><br><strong><a href=\"__APP__/photo/".$photo->id."\">".$photo->title."</a></strong></div>";
@@ -741,7 +739,7 @@ function getShareContent($module='Space',$id) {
 		$titleImage	=	$album->coverPhotoId;
 		if($titleImage>0){
 			$titleImage	=	D('Photo')->find($album->coverPhotoId)->imagePath;
-			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/album/".$album->id."\"><img src=\"".$p."/Thumb/?w=130&h=200&t=f&url=".$titleImage."\" alt=\"".$album->title."\"></a></div>";
+			$content	.=	"<div class=\"share-content-photo\"><a href=\"".__APP__."/album/".$album->id."\"><img src=\"".WEB_PUBLIC_URL."/Thumb/?w=130&h=200&t=f&url=".$titleImage."\" alt=\"".$album->title."\"></a></div>";
 		}
 		$content .=
 		"<div class=\"share-content-desc\"><strong><a href=\"".__APP__."/album/".$album->id."\">".$album->title."</a></strong> - <a href=\"".__APP__."/space/".$album->userId."\">".getUserName($album->userId)."</a><br>共".$album->photoCount."张照片<br>".$album->info."</div>";
