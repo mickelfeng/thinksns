@@ -60,7 +60,7 @@ class PublicAction extends Action {
 	//注册操作
 	public function doreg(){
 		if(isset($_POST["email"])){
-			$dao	=	D("user");
+			$dao	=	D("User");
 			$user	=	$dao->create();
 			$dao->password	=	md5($_POST["password"]);
 			if($userId = $dao->add()){
