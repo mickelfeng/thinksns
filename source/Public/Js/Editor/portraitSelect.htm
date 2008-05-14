@@ -1,0 +1,428 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>魔法表情</title>
+<style>
+#magicface{}
+#magicface td{ height:29px; width:29px; background-color:#F8F8F8; text-align:center;}
+#magicface td onmouseover{background-Color:#FFcccc;} 
+#nav td{font-size:12px;}
+.mf_nowchose{ height:30px; background-color:#DFDFDF;border:1px solid #B5B5B5; border-left:none;}
+.mf_other{ height:30px;border-left:1px solid #B5B5B5; }
+.mf_otherdiv{ height:30px; width:30px;border:1px solid #FFF; border-right-color:#D6D6D6; border-bottom-color:#D6D6D6; background-color:#F8F8F8;padding-top:10px;cursor:hand;}
+.mf_otherdiv2{ height:30px; width:30px;border:1px solid #B5B5B5; border-left:none; border-top:none;}
+.mf_link{ font-size:12px; color:#000000; text-decoration:none;}
+.mf_link:hover{ font-size:12px; color:#000000; text-decoration:underline;}
+
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var faceATips = new Array();
+faceATips[0] = "";
+faceATips[1] = "";
+faceATips[2] = "";
+faceATips[3] = "";
+faceATips[4] = "";
+faceATips[5] = "";
+faceATips[6] = "";
+faceATips[7] = "";
+faceATips[8] = "";
+faceATips[9] = "";
+faceATips[10] = "";
+faceATips[11] = "";
+faceATips[12] = "";
+faceATips[13] = "";
+faceATips[14] = "";
+faceATips[15] = "";
+faceATips[16] = "";
+faceATips[17] = "";
+faceATips[18] = "";
+faceATips[19] = "";
+faceATips[20] = "";
+faceATips[21] = "";
+faceATips[22] = "";
+faceATips[23] = "";
+faceATips[24] = "";
+faceATips[25] = "";
+faceATips[26] = "";
+faceATips[27] = "";
+faceATips[28] = "";
+faceATips[29] = "";
+faceATips[30] = "";
+faceATips[31] = "";
+faceATips[32] = "";
+faceATips[33] = "";
+faceATips[34] = "";
+faceATips[35] = "";
+faceATips[36] = "";
+faceATips[37] = "";
+faceATips[38] = "";
+faceATips[39] = "";
+faceATips[40] = "";
+faceATips[41] = "";
+faceATips[42] = "";
+faceATips[43] = "";
+faceATips[44] = "";
+faceATips[45] = "";
+faceATips[46] = "";
+faceATips[47] = "";
+faceATips[48] = "";
+faceATips[49] = "";
+faceATips[50] = "";
+faceATips[51] = "";
+faceATips[52] = "";
+faceATips[53] = "";
+faceATips[54] = "";
+faceATips[55] = "";
+faceATips[56] = "";
+faceATips[57] = "";
+faceATips[58] = "";
+faceATips[59] = "";
+faceATips[60] = "";
+faceATips[61] = "";
+faceATips[62] = "";
+faceATips[63] = "";
+faceATips[64] = "";
+faceATips[65] = "";
+
+var faceBTips = new Array();
+faceBTips[0] = "";
+faceBTips[1] = "";
+faceBTips[2] = "";
+faceBTips[3] = "";
+faceBTips[4] = "";
+faceBTips[5] = "";
+faceBTips[6] = "";
+faceBTips[7] = "";
+faceBTips[8] = "";
+faceBTips[9] = "";
+faceBTips[10] = "";
+faceBTips[11] = "";
+faceBTips[12] = "";
+faceBTips[13] = "";
+faceBTips[14] = "";
+faceBTips[15] = "";
+faceBTips[16] = "";
+faceBTips[17] = "";
+faceBTips[18] = "";
+faceBTips[19] = "";
+faceBTips[20] = "";
+faceBTips[21] = "";
+faceBTips[22] = "";
+faceBTips[23] = "";
+faceBTips[24] = "";
+faceBTips[25] = "";
+faceBTips[26] = "";
+faceBTips[27] = "";
+faceBTips[28] = "";
+faceBTips[29] = "";
+
+var faceCTips = new Array();
+faceCTips[0] = "";
+faceCTips[1] = "";
+faceCTips[2] = "";
+faceCTips[3] = "";
+faceCTips[4] = "";
+faceCTips[5] = "";
+faceCTips[6] = "";
+faceCTips[7] = "";
+faceCTips[8] = "";
+faceCTips[9] = "";
+faceCTips[10] = "";
+faceCTips[11] = "";
+faceCTips[12] = "";
+faceCTips[13] = "";
+faceCTips[14] = "";
+faceCTips[15] = "";
+faceCTips[16] = "";
+faceCTips[17] = "";
+faceCTips[18] = "";
+faceCTips[19] = "";
+faceCTips[20] = "";
+faceCTips[21] = "";
+faceCTips[22] = "";
+faceCTips[23] = "";
+faceCTips[24] = "";
+faceCTips[25] = "";
+faceCTips[26] = "";
+faceCTips[27] = "";
+faceCTips[28] = "";
+faceCTips[29] = "";
+faceCTips[30] = "";
+faceCTips[31] = "";
+faceCTips[32] = "";
+faceCTips[33] = "";
+faceCTips[34] = "";
+faceCTips[35] = "";
+faceCTips[36] = "";
+faceCTips[37] = "";
+faceCTips[38] = "";
+faceCTips[39] = "";
+faceCTips[40] = "";
+faceCTips[41] = "";
+faceCTips[42] = "";
+faceCTips[43] = "";
+faceCTips[44] = "";
+faceCTips[45] = "";
+faceCTips[46] = "";
+faceCTips[47] = "";
+faceCTips[48] = "";
+faceCTips[49] = "";
+faceCTips[50] = "";
+faceCTips[51] = "";
+faceCTips[52] = "";
+faceCTips[53] = "";
+faceCTips[54] = "";
+faceCTips[55] = "";
+faceCTips[56] = "";
+faceCTips[57] = "";
+faceCTips[58] = "";
+faceCTips[59] = "";
+
+var faceDTips = new Array();
+faceDTips[0] = "";
+faceDTips[1] = "";
+faceDTips[2] = "";
+faceDTips[3] = "";
+faceDTips[4] = "";
+faceDTips[5] = "";
+faceDTips[6] = "";
+faceDTips[7] = "";
+faceDTips[8] = "";
+faceDTips[9] = "";
+faceDTips[10] = "";
+faceDTips[11] = "";
+faceDTips[12] = "";
+faceDTips[13] = "";
+faceDTips[14] = "";
+faceDTips[15] = "";
+faceDTips[16] = "";
+faceDTips[17] = "";
+faceDTips[18] = "";
+faceDTips[19] = "";
+faceDTips[20] = "";
+faceDTips[21] = "";
+faceDTips[22] = "";
+faceDTips[23] = "";
+faceDTips[24] = "";
+faceDTips[25] = "";
+faceDTips[26] = "";
+faceDTips[27] = "";
+faceDTips[28] = "";
+faceDTips[29] = "";
+faceDTips[30] = "";
+faceDTips[31] = "";
+faceDTips[32] = "";
+faceDTips[33] = "";
+faceDTips[34] = "";
+faceDTips[35] = "";
+faceDTips[36] = "";
+faceDTips[37] = "";
+faceDTips[38] = "";
+faceDTips[39] = "";
+faceDTips[40] = "";
+faceDTips[41] = "";
+faceDTips[42] = "";
+faceDTips[43] = "";
+faceDTips[44] = "";
+faceDTips[45] = "";
+
+function p(count, name, path, pageCount){
+	this.count = count;
+	this.name = name;
+	this.path = path;
+	this.pageCount = Math.ceil(count/(row*col))-1;
+}
+var current = new Object();
+var filePath = "smile/";
+var preWidth = 54;
+var start = "mop";
+var row = 4;
+var col = 10;
+var tips = new Object();
+tips["mop"] = faceATips;
+tips["baozi"] = faceBTips;
+tips["monkey"] = faceCTips;
+tips["onion"] = faceDTips;
+var all = [
+	(new p(66,	"团团",	"mop")),
+	(new p(30,	"包子", "baozi")),
+	(new p(60,	"猴子", "monkey")),
+	(new p(46,	"洋葱", "onion"))
+];
+window.onload = function(){
+	fSetNav();
+	current.type = start;
+	current.page = 0;
+	change(start);
+}
+function fSetNav(){
+	var nav = $("nav");
+	for(var i=0;i<all.length;i++){
+		var tr = nav.insertRow(nav.rows.length-2);
+		var td = tr.insertCell(-1);
+		td.id = all[i].path;
+		td.height = "31";
+		td.vAlign = "middle";
+		td.className = "mf_other";
+		td.innerHTML = '<div class="mf_otherdiv2"><div class="mf_otherdiv" onclick="go(\''+all[i].path  +'\')">'+ all[i].name +'</div></div>';
+	}
+}
+function go(type){
+	current.type = type;
+	current.page = 0;
+	change(type);
+}
+function change(type){
+	fChangeTag(type);
+	fFillPic(type);
+	fGetPage(type);
+}
+function fGetPage(type){
+	var page = $("page");
+	var obj = fGetTypeObj(type);
+	page.innerHTML = (current.page+1) + '/'+ (obj.pageCount+1) +((current.page != 0)?' &nbsp;<a href="javascript:prePage();" class="mf_link">上页</a>':'') + ((current.page != obj.pageCount)?'&nbsp;<a href="javascript:nextPage();" class="mf_link">下页</a>':'');
+}
+function nextPage(){
+	var obj = fGetTypeObj(current.type);
+	if(current.page != obj.pageCount){
+		current.page ++;
+	}
+	change(current.type);
+}
+function prePage(){
+	var obj = fGetTypeObj(current.type);
+	if(current.page != 0){
+		current.page --;
+	}
+	change(current.type);
+}
+function fFillPic(type){
+	var count = fGetCurrentPageCount(type,current.page);
+	var countStart = current.page * row * col;
+	var content = $("content");
+	var n = 0;
+	for(var i=content.rows.length-1;i>-1;i--){
+		content.deleteRow(i);
+	}
+	for(var i=0;i<row;i++){
+		if(n == count) break;
+		var tr = content.insertRow(-1);
+		for(var j=0;j<col;j++){
+			if(n == count) break;
+			var td = tr.insertCell(-1);
+			td.innerHTML = '<div style=" width:27px; height:22px; padding-top:5px;text-align:center;" onmouseover="fMouseOver(this,'+ n +')" onmouseout="fMouseOut(this,'+ n +')"><a href="javascript:void(0);"><img src="'+ filePath + type + "/" + (countStart + n) +'.gif" width="19" height="19" title="'+ tips[type][n] +'" border="0" onclick="MouseClick(this.src);"></a></div>';
+			n ++;
+		}
+	}
+}
+function fMouseOver(obj,n){
+	obj.style.border='1px solid #000000';
+	var preview = $("preview");
+	var countStart = current.page * row * col;
+	preview.innerHTML = '<table width="60" height="60" bgcolor="white"><tr><td align="center" valign="middle"><img src='+ filePath + current.type + "/preview/" + (countStart + n) +'.gif></td></tr></table>';
+	var pos = obj.parentNode.cellIndex;
+	var x = f_GetX($("content"));
+	var y = f_GetY($("content"));
+	if(Math.round(pos/col)){
+		preview.style.left = x + "px";
+	}else{
+		preview.style.left = (x + $("content").offsetWidth - preview.offsetWidth) + "px";
+	}
+	preview.style.top =  y + "px";
+}
+function fMouseOut(obj,n){
+	obj.style.border='';
+	var preview = $("preview");
+	preview.innerHTML = "";
+}
+function fChangeTag(type){
+	for(var i=0;i<all.length;i++){
+		var td = $(all[i].path);
+		if(all[i].path == type){
+			td.className = "mf_nowchose";
+			td.innerHTML = all[i].name;
+		}else{
+			td.height = "31";
+			td.vAlign = "middle";
+			td.className = "mf_other";
+			td.innerHTML = '<div class="mf_otherdiv2"><div class="mf_otherdiv" onclick="go(\''+all[i].path  +'\')">'+ all[i].name +'</div></div>';
+		}
+	}
+}
+function fGetCurrentPageCount(type,page){
+	for(var i=0;i<all.length;i++){
+		if(all[i].path == type){
+			var count = all[i].count;
+			var pageCount = all[i].pageCount;
+			if(page == pageCount){
+				return count%(row*col) || count;
+			}else{
+				return row*col;
+			}
+		}
+	}
+}
+function fGetTypeObj(type){
+	for(var i=0;i<all.length;i++){
+		if(all[i].path == type){
+			return all[i];
+		}
+	}
+}
+function $(id){
+	return document.getElementById(id);
+}
+function f_GetX(e)
+{
+	var l=e.offsetLeft;
+	while(e=e.offsetParent){				
+		l+=e.offsetLeft;
+	}
+	return l;
+}
+function f_GetY(e)
+{
+	var t=e.offsetTop;
+	while(e=e.offsetParent){
+		t+=e.offsetTop;
+	}
+	return t;
+}
+function MouseClick( src )
+{	
+	if (src != null){
+		var index = src.lastIndexOf("/");
+		var file = src.substring(index);
+		src = src.replace(file, "/preview" + file);
+		window.parent.format("InsertImage", src);
+	}
+	var div = window.parent.document.getElementById("dvPortrait");
+	div.style.display = "none";
+	// div.parentNode.removeChild(div);
+    // window.returnValue = src;
+    // window.close();
+}
+//-->
+</SCRIPT>
+</head>
+
+<body>
+<table width="350" height="150" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="308" height="140" valign="top" bgcolor="#DFDFDF" id="magicface" style="border:1px solid #B5B5B5; border-right:none; padding:3px;"><div style="height:122px;"><table width="301" border="0" cellspacing="1" cellpadding="0" id="content">
+    </table></div>
+	<div style="background-color:#DFDFDF;line-height:10px; height:0px; text-align:right; width:290px; font-size:12px; padding:6px 10px 0px 0px;" id="page"></div></td>
+    <td width="42" valign="top"><table width="100%" height="150"  border="0" cellpadding="0" cellspacing="0" id="nav">
+      <tr>
+        <td style="border-left:1px solid #B5B5B5; line-height:5px; ">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="23"  style="border-left:1px solid #B5B5B5; line-height:23px; ">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<div id="preview" style="position:absolute;z-index:9"></div>
+</body>
+</html>

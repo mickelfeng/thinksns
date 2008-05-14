@@ -1,0 +1,9 @@
+这是我在校内论坛(club.xiao.com)上扒下来的一个在线HTML编辑器,功能简单,但我觉的很实用.
+
+edit.html 为调用示例
+    iframe src的参数 htmltool.htm?id=recontent&height=200 , id是前面隐藏的textarea的名字
+必须设为一置.
+
+    后台接收编辑器的值, php中 $_POST['recontent'], 就是接收文本区域 recontent 的值就可以了
+
+还要什么问题可以联系我 MSN: chenchuanwen@hotmail.com

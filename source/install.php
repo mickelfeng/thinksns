@@ -21,9 +21,11 @@
 </head>
 
 <?php
-
-if(phpversion()<5.0.0){
-	echo "当前 php版本 ".phpversion()."低于系统最低要求！无法安装！";
+$phpversion	=	phpversion();
+if($phpversion < '5.0.0'){
+	echo "当前 php版本 ".$phpversion."低于系统最低要求！无法安装！";
+}else{
+	echo "当前 php版本 ".$phpversion."符合系统要求！<br> 请修改根目录下config.inc.php权限为0777<br>Public目录及子目录权限0777<br>SNS目录下Temp,Cache,Data,Logs 目录权限为0777";
 }
 function ErrorInfo()
 {
