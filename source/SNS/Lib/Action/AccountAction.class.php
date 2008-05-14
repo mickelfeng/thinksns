@@ -183,7 +183,8 @@ class AccountAction extends BaseAction
 				$this->addUserFeed($userId,'add','face',$userId,$feedTitle);
 			/* /add_user_feed */
 		}
-		header("location:".__URL__."/face?up=ok");
+		//header("location:".__URL__."/face?up=ok");
+		$this->redirect('face');
 	}
 	function doChangeBasic() {
 		$userId		=	$this->mid;
