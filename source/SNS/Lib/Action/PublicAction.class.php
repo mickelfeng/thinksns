@@ -123,20 +123,9 @@ class PublicAction extends Action {
 			$this->error("两次输入的密码不一致！");
 			exit;
 		}
-		//验证旧密码
-		$list = $dao->find($map,"","password");
-		if($list->password!=md5($_POST['password'])){
-			$this->error("旧密码不正确！");
-			exit;
-		}
-		//验证新密码和旧密码是否相同
-		if($list->password==md5($_POST['newpassword'])){
-			$this->success("密码修改成功！");
-			exit;
-		}
 		//修改密码
-		$map->put('password',md5($_POST['newpassword']));
-		if($dao->save($map)){
+		$map['password']	=	md5($_POST['newpassword']);
+		if($dao->save($map,"email='$email'")){
 			$this->success("密码修改成功，请下一次使用新密码登陆！");
 		}else{
 			$this->error("密码修改失败！");
