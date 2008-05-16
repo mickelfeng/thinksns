@@ -167,6 +167,7 @@ class FriendAction extends BaseAction
 				$this->assign('face',$face);
 				$content	=	$this->fetch('mail');
 				$title		=	$userInfo->name."邀请您体验ThinkSNS！\n";
+				import('@.Util.sendmail');
 				if(sendemail($toEmail,$title,$content)){
 					$success_info .= "<li>$toEmail 发送成功！</li>\n";
 				}else{
