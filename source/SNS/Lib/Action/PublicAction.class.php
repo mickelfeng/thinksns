@@ -111,8 +111,7 @@ class PublicAction extends Action {
 	//修改密码
 	function doChangePassword() {
 		$email	=	jiemi($_POST['code'],'thinksns');
-		$map = new HashMap();
-		$map->put('email',$email);
+		$map['email]	=	$email;
 		$dao = D('User');
 		//验证密码位数
 		if(strlen($_POST['newpassword'])<6){
