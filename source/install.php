@@ -87,7 +87,7 @@ if(isset($_POST['install']))	//提交创建
 		}
 		if($fp=fopen("config.inc.php",'x'))
 		{
-			$configstr="<?\nreturn array(\n/* 数据库 设定 */\n'DB_TYPE'=>'mysql',\n'DB_HOST'=>'".$_POST['dbhost']."',\n'DB_NAME'=>'".$_POST['dbname']."',\n'DB_USER'=>'".$_POST['dbuser']."',\n'DB_PWD'=>'".$_POST['dbpass']."',\n'DB_PORT'=>'".$_POST['dbport']."',\n'DB_PREFIX'=>'think_',\n/* EMAIL 设置 */\n'SMTP_HOST'			=>	'',\n'SMTP_USER'			=>	'',\n'SMTP_PASSWORD'		=>	'',\n'SMTP_SENDER'		=>	'www.ThinkSNS.com',\n'SMTP_SENDER_EMAIL'	=>	'name@host.com',\n/* 网站 设置 */\n'SITE_HOST'			=>	'".$_POST['site_host']."',\n'SITE_NAME'			=>	'".$_POST['site_name']."',\n'SITE_TITLE'		=>	'".$_POST['site_title']."',\n'SITE_DESCRIPTION'	=>	'',\n'SITE_OPEN'	=>	'".$_POST['site_open']."',\n);\n?>";
+			$configstr="<?php\nreturn array(\n/* 数据库 设定 */\n'DB_TYPE'=>'mysql',\n'DB_HOST'=>'".$_POST['dbhost']."',\n'DB_NAME'=>'".$_POST['dbname']."',\n'DB_USER'=>'".$_POST['dbuser']."',\n'DB_PWD'=>'".$_POST['dbpass']."',\n'DB_PORT'=>'".$_POST['dbport']."',\n'DB_PREFIX'=>'think_',\n/* EMAIL 设置 */\n'SMTP_HOST'			=>	'',\n'SMTP_USER'			=>	'',\n'SMTP_PASSWORD'		=>	'',\n'SMTP_SENDER'		=>	'www.ThinkSNS.com',\n'SMTP_SENDER_EMAIL'	=>	'name@host.com',\n/* 网站 设置 */\n'SITE_HOST'			=>	'".$_POST['site_host']."',\n'SITE_NAME'			=>	'".$_POST['site_name']."',\n'SITE_TITLE'		=>	'".$_POST['site_title']."',\n'SITE_DESCRIPTION'	=>	'',\n'SITE_OPEN'	=>	'".$_POST['site_open']."',\n);\n?>";
 
 
 			echo "<br />创建配置文件 <strong>config.inc.php</strong> ";
